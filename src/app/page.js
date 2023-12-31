@@ -81,7 +81,7 @@ export default function Home() {
         }
         <Divider my="md" />
         <Link href="https://cdn.thedannicraft.de/CV-TheDanniCraft.pdf" target='_blank' >
-          <Button variant='outline' leftSection={<IconDownload />}>
+          <Button variant='outline' leftSection={<IconDownload />} fullWidth>
             Downlaod CV
           </Button>
         </Link>
