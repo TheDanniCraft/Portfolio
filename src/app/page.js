@@ -55,7 +55,7 @@ export default function Home() {
             <Text size="xl">TheDanniCraft</Text>
             <Group ml="xl" gap={25} visibleFrom="sm">
               {
-                links.map((link) => (
+                links.filter(link => !link.hidden).map((link) => (
                   <Anchor key={link.label} href={link.href} c="var(--mantine-color-text)" underline='never'>
                     {link.label}
                   </Anchor>
@@ -73,16 +73,18 @@ export default function Home() {
 
       <AppShell.Navbar py="md" px={4}>
         {
-          links.map((link) => (
+          links.filter(link => !link.hidden).map((link) => (
             <Anchor key={link.label} href={link.href} c="var(--mantine-primary-color-5)" underline='never' onClick={toggle}>
               {link.label}
             </Anchor>
           ))
         }
         <Divider my="md" />
-        <Button variant='outline' leftSection={<IconDownload />}>
-          Downlaod CV
-        </Button>
+        <Link href="https://cdn.thedannicraft.de/CV-TheDanniCraft.pdf" target='_blank' >
+          <Button variant='outline' leftSection={<IconDownload />}>
+            Downlaod CV
+          </Button>
+        </Link>
       </AppShell.Navbar>
 
       <AppShell.Main id="home">
