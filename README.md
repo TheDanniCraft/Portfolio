@@ -15,9 +15,11 @@ My personal portfolio to showcase myself on the internet
 - Multiple Themes
 - Skills, Projects CV all in one place
 
+<!---
 ## Lighthouse Score
 
 [![Lighthouse Score](https://raw.githubusercontent.com/TheDanniCraft/Portfolio/master/lighthouse_results/desktop/pagespeed.svg)](https://htmlpreview.github.io/?https://raw.githubusercontent.com/TheDanniCraft/Portfolio/master/lighthouse_results/desktop/thedannicraft_de.html)
+-->
 
 ## Tech Stack
 
