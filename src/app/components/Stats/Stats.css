@@ -1,0 +1,12 @@
+.full {
+	width: 17vw;
+}
+
+.big-text-stats {
+	font-size: 5vw;
+	color: var(--mantine-primary-color-5);
+}
+
+.small-text-stats {
+	font-size: 1.5vw;
+}

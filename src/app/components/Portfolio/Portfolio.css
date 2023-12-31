@@ -1,0 +1,49 @@
+:root {
+	--slider-size: 32%;
+}
+
+.portfolio-image {
+	height: 15vw;
+}
+
+.tag {
+	margin: 5px 5px 0 0;
+}
+
+.tag > span {
+	font-size: 1rem;
+}
+
+.project {
+	height: 100%;
+}
+
+.project-title {
+	font-size: 2vw;
+}
+
+.project-description {
+	font-size: 1vw;
+}
+
+@media (max-width: 767px) {
+	.portfolio-image {
+		height: 10vh;
+	}
+
+	.project-title {
+		font-size: 4vw;
+	}
+
+	.project-description {
+		font-size: 3vw;
+	}
+
+	.tag > span {
+		font-size: 2.5vw;
+	}
+
+	:root {
+		--slider-size: 90%;
+	}
+}

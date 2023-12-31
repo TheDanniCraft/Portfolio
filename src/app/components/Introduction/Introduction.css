@@ -1,0 +1,111 @@
+.big,
+.typing {
+	font-size: 4vw;
+}
+
+.portrait-wrapper {
+	position: relative;
+	width: fit-content;
+}
+
+.portrait-image {
+	display: block;
+	width: 100.1%;
+	height: auto;
+	z-index: 0;
+}
+
+.svg-overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	pointer-events: none;
+	z-index: -1;
+}
+
+.animated-text span {
+	position: relative;
+}
+
+.animated-text span::before {
+	content: "Web Developer";
+	color: var(--mantine-primary-color-5);
+	animation: words 20s infinite;
+}
+
+.animated-text span::after {
+	content: "";
+	position: absolute;
+	width: calc(100% + 8px);
+	height: 100%;
+	background-color: var(--mantine-color-body);
+	border-left: 2px solid var(--mantine-primary-color-5);
+	right: -8px;
+	animation: cursor 0.8s infinite, typing 20s steps(14) infinite;
+}
+
+@keyframes cursor {
+	to {
+		border-left: 2px solid var(--mantine-color-default);
+	}
+}
+
+@keyframes words {
+	0%,
+	20% {
+		content: "Web Developer";
+	}
+	21%,
+	40% {
+		content: "Game Developer";
+	}
+	41%,
+	60% {
+		content: "Bot Developer";
+	}
+	61%,
+	80% {
+		content: "Content Creator";
+	}
+	81%,
+	100% {
+		content: "Plugin Developer";
+	}
+}
+
+@keyframes typing {
+	10%,
+	15%,
+	30%,
+	35%,
+	50%,
+	55%,
+	70%,
+	75%,
+	90%,
+	95% {
+		width: 0;
+	}
+	5%,
+	20%,
+	25%,
+	40%,
+	45%,
+	60%,
+	65%,
+	80%,
+	85% {
+		width: calc(100% + 8px);
+	}
+}
+@media (max-width: 767px) {
+	.big,
+	.typing {
+		font-size: 7vw;
+	}
+
+	.socials,
+	.contact {
+		display: none;
+	}
+}
