@@ -50,7 +50,7 @@ export default function Home() {
       navbar={{ width: 300, breakpoint: 'sm', collapsed: { desktop: true, mobile: !opened } }}
       padding="md"
     >
-      <PlausibleProvider domain="test.de" customDomain="https://analytics.thedannicraft.de" trackOutboundLinks trackFileDownloads trackLocalhost selfHosted enabled pageviewProps={{
+      <PlausibleProvider domain="thedannicraft.de" customDomain="https://analytics.thedannicraft.de" trackOutboundLinks trackFileDownloads trackLocalhost selfHosted enabled pageviewProps={{
         colorscheme: colorScheme,
         color: theme.primaryColor
       }} />
