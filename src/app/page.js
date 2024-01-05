@@ -1,6 +1,6 @@
 "use client"
 
-import { Fragment } from 'react';
+import { Fragment, useEffect } from 'react';
 import { ActionIcon, Affix, Anchor, AppShell, Burger, Button, Divider, Group, Space, Text, Transition, useMantineColorScheme, useMantineTheme, Popover, Switch, Center, Stack, ScrollArea, createTheme, mergeMantineTheme } from '@mantine/core';
 import { useDisclosure, useForceUpdate, useWindowScroll } from '@mantine/hooks'
 import { IconArrowUp, IconDownload, IconMoon, IconPaintFilled, IconSun } from "@tabler/icons-react";
@@ -13,6 +13,12 @@ import Skills from '@/app/components/Skills/Skills';
 import Portfolio from '@/app/components/Portfolio/Portfilio';
 import Reviews from '@/app/components/Reviews/Reviews';
 import { useTheme } from './Theme';
+import Plausible from 'plausible-tracker'
+const { trackPageview, trackEvent } = Plausible({
+  domain: 'thedannicraft.de',
+  apiHost: 'https://analytics.thedannicraft.de',
+  trackLocalhost: true,
+})
 
 const links = [
   {
@@ -42,6 +48,11 @@ export default function Home() {
   const theme = useMantineTheme();
   const { setTheme } = useTheme();
 
+  useEffect(() => {
+    trackPageview({}, { props: { colorScheme: colorScheme, color: theme.primaryColor } })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
   return (
     <AppShell
       header={{ height: 60 }}
@@ -62,7 +73,7 @@ export default function Home() {
                 ))
               }
             </Group>
-            <Link href="https://cdn.thedannicraft.de/CV-TheDanniCraft.pdf" target='_blank' >
+            <Link href="https://cdn.thedannicraft.de/CV-TheDanniCraft.pdf" target='_blank' onClick={() => trackEvent('cv-download')} >
               <Button variant='outline' leftSection={<IconDownload />} visibleFrom="sm">
                 Downlaod CV
               </Button>
@@ -80,7 +91,7 @@ export default function Home() {
           ))
         }
         <Divider my="md" />
-        <Link href="https://cdn.thedannicraft.de/CV-TheDanniCraft.pdf" target='_blank' >
+        <Link href="https://cdn.thedannicraft.de/CV-TheDanniCraft.pdf" target='_blank' onClick={() => trackEvent('cv-download')} >
           <Button variant='outline' leftSection={<IconDownload />} fullWidth>
             Downlaod CV
           </Button>
@@ -88,13 +99,13 @@ export default function Home() {
       </AppShell.Navbar>
 
       <AppShell.Main id="home">
-        <Introduction />
+        <Introduction trackEvent={trackEvent} />
         <Space className='seperator' />
         <Stats />
         <Space className='seperator' id='skills' />
-        <Skills />
+        <Skills trackEvent={trackEvent} />
         <Space className='seperator' id='portfolio' />
-        <Portfolio />
+        <Portfolio trackEvent={trackEvent} />
         {
           /*  Add reviews once permission to publish a review
             <Space className='seperator' id='testimonials' />
@@ -124,7 +135,10 @@ export default function Home() {
             <Stack align="center">
               <ActionIcon
                 size="3vh"
-                onClick={() => setColorScheme(colorScheme === 'light' ? 'dark' : 'light')}
+                onClick={() => {
+                  setColorScheme(colorScheme === 'light' ? 'dark' : 'light')
+                  trackEvent('colorScheme-change', { props: { colorScheme: `${colorScheme} ➜ ${colorScheme === 'light' ? 'dark' : 'light'}` } })
+                }}
                 variant="default"
               >
                 <IconSun color='var(--mantine-color-yellow-4)' display={colorScheme == 'light' ? "none" : "block"} />
@@ -138,6 +152,7 @@ export default function Home() {
                     })
 
                     setTheme(mergeMantineTheme(theme, newTheme))
+                    trackEvent('color-change', { props: { color: `${theme.primaryColor} ➜ ${color}` } })
                   }} />
                 ))
               }

@@ -4,7 +4,9 @@ import Portait from "../../static/img/Portrait.png";
 import './Introduction.css';
 import { IconBrandDiscord, IconBrandGithub, IconBrandInstagram, IconBrandThreads, IconBrandTwitch, IconBrandYoutube, IconMessageShare } from "@tabler/icons-react";
 
-export default function Introduction() {
+export default function Introduction(props) {
+    const { trackEvent } = props;
+
     return (
         <Center>
             <Grid>
@@ -39,7 +41,10 @@ export default function Introduction() {
                             </Anchor>
 
                         </Group>
-                        <Button leftSection={<IconMessageShare />} size="lg" className="contact" onClick={() => { window.$chatwoot.toggle(); }}>Contact</Button>
+                        <Button leftSection={<IconMessageShare />} size="lg" className="contact" onClick={() => {
+                            window.$chatwoot.toggle();
+                            trackEvent('chat-open', { props: { context: 'introduction' } })
+                        }}>Contact</Button>
                     </Stack>
                 </Grid.Col>
                 <Grid.Col span={{ base: 12, sm: 5 }} >

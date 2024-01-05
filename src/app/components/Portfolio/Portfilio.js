@@ -42,7 +42,8 @@ const projects = [
     }
 ]
 
-export default function Portfolio() {
+export default function Portfolio(props) {
+    const { trackEvent } = props;
     const autoplay = useRef(Autoplay({ delay: 2000 }));
 
     return (
@@ -78,7 +79,7 @@ export default function Portfolio() {
                                         <Title className='project-title'>{project.name}</Title>
                                         <Text className='project-description'>{project.description}</Text>
                                     </div>
-                                    <NavLink disabled={project.link ? false : true} href={project.link} leftSection={<IconScreenShare />} label="Open Project" />
+                                    <NavLink disabled={project.link ? false : true} href={project.link ? project.link : '#portfolio'} leftSection={<IconScreenShare />} label="Open Project" onClick={() => trackEvent('open-project', { props: { project: project.name } })} />
                                 </Stack>
                             </Card>
                         </Carousel.Slide>

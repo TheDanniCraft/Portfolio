@@ -55,7 +55,9 @@ const skills = [
     },
 ]
 
-export default function Skills() {
+export default function Skills(props) {
+    const { trackEvent } = props;
+
     return (
         <>
             <Grid>
@@ -68,7 +70,10 @@ export default function Skills() {
                         My commitment to staying current with the latest technologies ensures that I deliver high-quality, innovative solutions that meet and exceed expectations.
                         Hiring me means bringing on board a proactive and adaptable professional committed to delivering exceptional results in software and game development.
                     </Text>
-                    <Button size="md" className="hire" leftSection={<IconHeartHandshake />} onClick={() => { window.$chatwoot.toggle(); }}>Hire Now!</Button>
+                    <Button size="md" className="hire" leftSection={<IconHeartHandshake />} onClick={() => {
+                        window.$chatwoot.toggle();
+                        trackEvent('chat-open', { props: { context: 'skills' } })
+                    }}>Hire Now!</Button>
                 </Grid.Col>
                 <Grid.Col span={{ base: 12, sm: 5 }}>
                     {
