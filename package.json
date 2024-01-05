@@ -9,10 +9,10 @@
 		"lint": "next lint"
 	},
 	"dependencies": {
-		"@mantine/carousel": "^7.3.2",
+		"@mantine/carousel": "^7.4.0",
 		"@mantine/core": "^7.3.2",
 		"@mantine/hooks": "^7.3.2",
-		"@tabler/icons-react": "^2.44.0",
+		"@tabler/icons-react": "^2.45.0",
 		"@tiptap/extension-link": "^2.1.13",
 		"@tiptap/react": "^2.1.13",
 		"@tiptap/starter-kit": "^2.1.13",
@@ -29,7 +29,7 @@
 		"eslint": "^8",
 		"eslint-config-next": "14.0.4",
 		"postcss": "^8.4.32",
-		"postcss-preset-mantine": "^1.12.2",
+		"postcss-preset-mantine": "^1.12.3",
 		"postcss-simple-vars": "^7.0.1",
 		"tailwindcss": "^3.3.0"
 	}
