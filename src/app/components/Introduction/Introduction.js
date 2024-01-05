@@ -3,9 +3,10 @@ import { Anchor, Button, Center, Grid, Group, Image, Stack, Text } from "@mantin
 import Portait from "../../static/img/Portrait.png";
 import './Introduction.css';
 import { IconBrandDiscord, IconBrandGithub, IconBrandInstagram, IconBrandThreads, IconBrandTwitch, IconBrandYoutube, IconMessageShare } from "@tabler/icons-react";
+import { usePlausible } from "next-plausible";
 
-export default function Introduction(props) {
-    const { trackEvent } = props;
+export default function Introduction() {
+    const plausible = usePlausible()
 
     return (
         <Center>
@@ -43,7 +44,7 @@ export default function Introduction(props) {
                         </Group>
                         <Button leftSection={<IconMessageShare />} size="lg" className="contact" onClick={() => {
                             window.$chatwoot.toggle();
-                            trackEvent('chat-open', { props: { context: 'introduction' } })
+                            plausible('chat-open', { props: { context: 'introduction' } })
                         }}>Contact</Button>
                     </Stack>
                 </Grid.Col>

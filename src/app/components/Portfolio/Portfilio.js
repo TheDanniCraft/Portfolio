@@ -4,6 +4,7 @@ import { Carousel } from "@mantine/carousel";
 import { Card, Center, Image, NavLink, Pill, Space, Stack, Text, Title } from "@mantine/core";
 import './Portfolio.css';
 import { IconScreenShare } from '@tabler/icons-react';
+import { usePlausible } from 'next-plausible';
 
 const projects = [
     {
@@ -42,8 +43,8 @@ const projects = [
     }
 ]
 
-export default function Portfolio(props) {
-    const { trackEvent } = props;
+export default function Portfolio() {
+    const plausible = usePlausible()
     const autoplay = useRef(Autoplay({ delay: 2000 }));
 
     return (
@@ -79,7 +80,7 @@ export default function Portfolio(props) {
                                         <Title className='project-title'>{project.name}</Title>
                                         <Text className='project-description'>{project.description}</Text>
                                     </div>
-                                    <NavLink disabled={project.link ? false : true} href={project.link ? project.link : '#portfolio'} leftSection={<IconScreenShare />} label="Open Project" onClick={() => trackEvent('open-project', { props: { project: project.name } })} />
+                                    <NavLink disabled={project.link ? false : true} href={project.link ? project.link : '#portfolio'} leftSection={<IconScreenShare />} label="Open Project" onClick={() => plausible('open-project', { props: { project: project.name } })} />
                                 </Stack>
                             </Card>
                         </Carousel.Slide>

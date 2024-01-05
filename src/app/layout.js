@@ -4,7 +4,7 @@ import './globals.css'
 import '@mantine/core/styles.css';
 import '@mantine/carousel/styles.css';
 
-import { ColorSchemeScript, MantineProvider, createTheme } from '@mantine/core';
+import { ColorSchemeScript, useMantineTheme } from '@mantine/core';
 import Theme from './Theme';
 
 export const metadata = {
@@ -17,6 +17,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <head>
         <ColorSchemeScript />
+
         <meta name="title" content="TheDanniCraft - Offical Website" />
         <meta name="description" content="Learn more about TheDanniCraft. A passionate developer, creator and community owner. The right place to learn more about TheDanniCraft and his work." />
         <meta name="copyright" content="TheDanniCraft" />

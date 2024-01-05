@@ -13,12 +13,7 @@ import Skills from '@/app/components/Skills/Skills';
 import Portfolio from '@/app/components/Portfolio/Portfilio';
 import Reviews from '@/app/components/Reviews/Reviews';
 import { useTheme } from './Theme';
-import Plausible from 'plausible-tracker'
-const { trackPageview, trackEvent } = Plausible({
-  domain: 'thedannicraft.de',
-  apiHost: 'https://analytics.thedannicraft.de',
-  trackLocalhost: true,
-})
+import PlausibleProvider, { usePlausible } from 'next-plausible'
 
 const links = [
   {
@@ -42,16 +37,12 @@ const links = [
 
 
 export default function Home() {
+  const plausible = usePlausible()
   const [opened, { toggle }] = useDisclosure();
   const [scroll, scrollTo] = useWindowScroll();
   const { colorScheme, setColorScheme } = useMantineColorScheme();
   const theme = useMantineTheme();
   const { setTheme } = useTheme();
-
-  useEffect(() => {
-    trackPageview({}, { props: { colorScheme: colorScheme, color: theme.primaryColor } })
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
 
   return (
     <AppShell
@@ -59,6 +50,10 @@ export default function Home() {
       navbar={{ width: 300, breakpoint: 'sm', collapsed: { desktop: true, mobile: !opened } }}
       padding="md"
     >
+      <PlausibleProvider domain="test.de" customDomain="https://analytics.thedannicraft.de" trackOutboundLinks trackFileDownloads trackLocalhost selfHosted enabled pageviewProps={{
+        colorscheme: colorScheme,
+        color: theme.primaryColor
+      }} />
       <AppShell.Header withBorder={false}>
         <Group h="100%" px="md">
           <Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" />
@@ -73,7 +68,7 @@ export default function Home() {
                 ))
               }
             </Group>
-            <Link href="https://cdn.thedannicraft.de/CV-TheDanniCraft.pdf" target='_blank' onClick={() => trackEvent('cv-download')} >
+            <Link href="https://cdn.thedannicraft.de/CV-TheDanniCraft.pdf" target='_blank' onClick={() => plausible('cv-download')} >
               <Button variant='outline' leftSection={<IconDownload />} visibleFrom="sm">
                 Downlaod CV
               </Button>
@@ -91,7 +86,7 @@ export default function Home() {
           ))
         }
         <Divider my="md" />
-        <Link href="https://cdn.thedannicraft.de/CV-TheDanniCraft.pdf" target='_blank' onClick={() => trackEvent('cv-download')} >
+        <Link href="https://cdn.thedannicraft.de/CV-TheDanniCraft.pdf" target='_blank' onClick={() => plausible('cv-download')} >
           <Button variant='outline' leftSection={<IconDownload />} fullWidth>
             Downlaod CV
           </Button>
@@ -99,13 +94,13 @@ export default function Home() {
       </AppShell.Navbar>
 
       <AppShell.Main id="home">
-        <Introduction trackEvent={trackEvent} />
+        <Introduction />
         <Space className='seperator' />
         <Stats />
         <Space className='seperator' id='skills' />
-        <Skills trackEvent={trackEvent} />
+        <Skills />
         <Space className='seperator' id='portfolio' />
-        <Portfolio trackEvent={trackEvent} />
+        <Portfolio />
         {
           /*  Add reviews once permission to publish a review
             <Space className='seperator' id='testimonials' />
@@ -137,7 +132,7 @@ export default function Home() {
                 size="3vh"
                 onClick={() => {
                   setColorScheme(colorScheme === 'light' ? 'dark' : 'light')
-                  trackEvent('colorScheme-change', { props: { colorScheme: `${colorScheme} ➜ ${colorScheme === 'light' ? 'dark' : 'light'}` } })
+                  plausible('colorScheme-change', { props: { colorscheme: `${colorScheme} ➜ ${colorScheme === 'light' ? 'dark' : 'light'}` } })
                 }}
                 variant="default"
               >
@@ -152,7 +147,7 @@ export default function Home() {
                     })
 
                     setTheme(mergeMantineTheme(theme, newTheme))
-                    trackEvent('color-change', { props: { color: `${theme.primaryColor} ➜ ${color}` } })
+                    plausible('color-change', { props: { color: `${theme.primaryColor} ➜ ${color}` } })
                   }} />
                 ))
               }

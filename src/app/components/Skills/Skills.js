@@ -1,6 +1,7 @@
 import { Button, Grid, Group, NumberFormatter, Progress, Text, Title } from "@mantine/core";
 import './Skills.css';
 import { IconHeartHandshake } from "@tabler/icons-react";
+import { usePlausible } from "next-plausible";
 
 const skills = [
     {
@@ -55,8 +56,8 @@ const skills = [
     },
 ]
 
-export default function Skills(props) {
-    const { trackEvent } = props;
+export default function Skills() {
+    const plausible = usePlausible()
 
     return (
         <>
@@ -72,7 +73,7 @@ export default function Skills(props) {
                     </Text>
                     <Button size="md" className="hire" leftSection={<IconHeartHandshake />} onClick={() => {
                         window.$chatwoot.toggle();
-                        trackEvent('chat-open', { props: { context: 'skills' } })
+                        plausible('chat-open', { props: { context: 'skills' } })
                     }}>Hire Now!</Button>
                 </Grid.Col>
                 <Grid.Col span={{ base: 12, sm: 5 }}>
