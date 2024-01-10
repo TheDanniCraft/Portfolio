@@ -9,7 +9,7 @@
 		"lint": "next lint"
 	},
 	"dependencies": {
-		"@mantine/carousel": "^7.4.0",
+		"@mantine/carousel": "^7.4.1",
 		"@mantine/core": "^7.3.2",
 		"@mantine/hooks": "^7.3.2",
 		"@tabler/icons-react": "^2.45.0",
