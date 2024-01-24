@@ -25,7 +25,7 @@ export default function Introduction() {
                             <Anchor c="var(--mantine-color-text)" href="https://github.com/thedannicraft">
                                 <IconBrandGithub />
                             </Anchor>
-                            <Anchor c="var(--mantine-color-text)" href="https://discord.gg/deutsch">
+                            <Anchor c="var(--mantine-color-text)" href="https://discord.gg/8CXEAFqhgE">
                                 <IconBrandDiscord />
                             </Anchor>
                             <Anchor c="var(--mantine-color-text)" href="https://youtube.com/thedannicraft">
