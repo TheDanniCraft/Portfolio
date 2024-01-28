@@ -1,0 +1,13 @@
+.star {
+	color: var(--mantine-color-yellow-7);
+}
+
+.reviewBar {
+	width: 85%;
+}
+
+@media (max-width: 767px) {
+	.reviewBar {
+		width: 90%;
+	}
+}

@@ -2,59 +2,7 @@ import { Button, Grid, Group, NumberFormatter, Progress, Text, Title } from "@ma
 import './Skills.css';
 import { IconHeartHandshake } from "@tabler/icons-react";
 import { usePlausible } from "next-plausible";
-
-const skills = [
-    {
-        "name": "HTML",
-        "color": "red",
-        "percentage": 100
-    },
-    {
-        "name": "CSS",
-        "color": "var(--mantine-color-indigo-7)",
-        "percentage": 90
-    },
-    {
-        "name": "Javascript",
-        "color": "yellow",
-        "percentage": 100
-    },
-    {
-        "name": "Node.js",
-        "color": "green",
-        "percentage": 100
-    },
-    {
-        "name": "React",
-        "color": "cyan",
-        "percentage": 80
-    },
-    {
-        "name": "Java",
-        "color": "orange",
-        "percentage": 70
-    },
-    {
-        "name": "C# (with Unity)",
-        "color": "grape",
-        "percentage": 75
-    },
-    {
-        "name": "C++",
-        "color": "blue",
-        "percentage": 50
-    },
-    {
-        "name": "Python",
-        "color": "var(--mantine-color-yellow-4)",
-        "percentage": 30
-    },
-    {
-        "name": "Markdown",
-        "color": "var(--mantine-color-dark-9)",
-        "percentage": 95
-    },
-]
+import { skills } from "@/app/data";
 
 export default function Skills() {
     const plausible = usePlausible()

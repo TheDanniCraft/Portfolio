@@ -15,25 +15,7 @@ import Reviews from '@/app/components/Reviews/Reviews';
 import { useTheme } from './Theme';
 import PlausibleProvider, { usePlausible } from 'next-plausible'
 
-const links = [
-  {
-    label: 'Home',
-    href: '#home'
-  },
-  {
-    label: 'Skills',
-    href: '#skills'
-  },
-  {
-    label: 'Portfolio',
-    href: '#portfolio'
-  },
-  {
-    label: 'Testimonials',
-    href: '#testimonials',
-    hidden: true
-  },
-]
+import { links } from './data';
 
 
 export default function Home() {
@@ -50,7 +32,7 @@ export default function Home() {
       navbar={{ width: 300, breakpoint: 'sm', collapsed: { desktop: true, mobile: !opened } }}
       padding="md"
     >
-      <PlausibleProvider domain="thedannicraft.de" customDomain="https://analytics.thedannicraft.de" trackOutboundLinks trackFileDownloads trackLocalhost selfHosted enabled pageviewProps={{
+      <PlausibleProvider domain="thedannicraft.de" customDomain="https://analytics.thedannicraft.de" trackOutboundLinks trackFileDownloads selfHosted enabled pageviewProps={{
         colorscheme: colorScheme,
         color: theme.primaryColor
       }} />
@@ -101,12 +83,8 @@ export default function Home() {
         <Skills />
         <Space className='seperator' id='portfolio' />
         <Portfolio />
-        {
-          /*  Add reviews once permission to publish a review
-            <Space className='seperator' id='testimonials' />
-            <Reviews />
-          */
-        }
+        <Space className='seperator' id='testimonials' />
+        <Reviews />
         <Space className='seperator' />
         <Divider />
 
