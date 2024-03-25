@@ -1,19 +1,19 @@
 const links = [
   {
     label: 'Home',
-    href: '#home'
+    href: '/#home'
   },
   {
     label: 'Skills',
-    href: '#skills'
+    href: '/#skills'
   },
   {
     label: 'Portfolio',
-    href: '#portfolio'
+    href: '/#portfolio'
   },
   {
     label: 'Testimonials',
-    href: '#testimonials'
+    href: '/#testimonials'
   },
 ]
 
