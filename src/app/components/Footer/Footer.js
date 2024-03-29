@@ -59,7 +59,7 @@ export default function Footer() {
             <Space h="md" />
             <Center>
                 <Anchor href="https://status.thedannicraft.de" underline='never'>
-                    <Image src="https://status.thedannicraft.de/api/badge/8/uptime?style=for-the-badge" alt='Status Badge' radius="xs" w={rem(200)} />
+                    <Image src="https://status.thedannicraft.de/api/badge/21/uptime?style=for-the-badge" alt='Status Badge' radius="xs" w={rem(200)} />
                 </Anchor>
             </Center>
         </>
