@@ -1,30 +1,31 @@
 import { Avatar, Button, Card, Center, Divider, Grid, Group, Image, NumberFormatter, Paper, Progress, Rating, Space, Stack, Text, Title, UnstyledButton } from "@mantine/core";
 
-import { reviews } from "@/app/data";
 import './Reviews.css'
 import { IconStarFilled } from "@tabler/icons-react";
 import { useState } from "react";
-
-function calculateAverageRating() {
-    if (reviews.length === 0) {
-        return 0;
-    }
-
-    const totalRating = reviews.reduce(function (acc, review) {
-        return acc + review.stars;
-    }, 0);
-    return (totalRating / reviews.length).toFixed(1);
-}
-
-function reviewPercentage(value) {
-    const matchingReviews = reviews.filter(review => review.stars === value);
-
-    const percentage = (matchingReviews.length / reviews.length) * 100;
-    return percentage;
-}
+import { base, useCMSData } from '@/app/CMS'
 
 export default function Reviews() {
     const [starFilter, setStarFilter] = useState(null);
+    const reviews = useCMSData('reviews');
+
+    function calculateAverageRating() {
+        if (reviews.length === 0) {
+            return 0;
+        }
+
+        const totalRating = reviews.reduce(function (acc, review) {
+            return acc + review.stars;
+        }, 0);
+        return (totalRating / reviews.length).toFixed(1);
+    }
+
+    function reviewPercentage(value) {
+        const matchingReviews = reviews.filter(review => review.stars === value);
+
+        const percentage = (matchingReviews.length / reviews.length) * 100;
+        return percentage;
+    }
 
     function toggleFilter(stars) {
         if (starFilter == null || starFilter != stars) {
@@ -92,7 +93,7 @@ export default function Reviews() {
                                         <Group>
                                             {review.product}
                                             <Divider orientation="vertical" />
-                                            {review.date}
+                                            {Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'short' }).format(new Date(Date.parse(review.date)))}
                                             <Divider orientation="vertical" />
                                             {review.source}
                                         </Group>

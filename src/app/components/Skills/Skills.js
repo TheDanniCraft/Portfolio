@@ -2,10 +2,11 @@ import { Button, Grid, Group, NumberFormatter, Progress, Text, Title } from "@ma
 import './Skills.css';
 import { IconHeartHandshake } from "@tabler/icons-react";
 import { usePlausible } from "next-plausible";
-import { skills } from "@/app/data";
+import { useCMSData } from '@/app/CMS'
 
 export default function Skills() {
-    const plausible = usePlausible()
+    const plausible = usePlausible();
+    const skills = useCMSData('skills');
 
     return (
         <>

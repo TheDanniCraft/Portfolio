@@ -7,9 +7,8 @@ import { IconArrowUp, IconDownload, IconMoon, IconPaintFilled, IconSun } from "@
 import ChatwootWidget from "./ChatwootWidget";
 
 import { useTheme } from '@/app/Theme';
+import { useCMSData } from '@/app/CMS'
 import PlausibleProvider, { usePlausible } from 'next-plausible'
-
-import { links } from '@/app/data';
 
 
 export default function GlobalLayout({ children }) {
@@ -19,6 +18,7 @@ export default function GlobalLayout({ children }) {
     const { colorScheme, setColorScheme } = useMantineColorScheme();
     const theme = useMantineTheme();
     const { setTheme } = useTheme();
+    const links = useCMSData('links');
 
     return (
         <AppShell

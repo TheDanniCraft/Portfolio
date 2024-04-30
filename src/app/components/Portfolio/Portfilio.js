@@ -5,11 +5,12 @@ import { Card, Center, Image, NavLink, Pill, Space, Stack, Text, Title } from "@
 import './Portfolio.css';
 import { IconScreenShare } from '@tabler/icons-react';
 import { usePlausible } from 'next-plausible';
-import { projects } from '@/app/data';
+import { base, useCMSData } from '@/app/CMS'
 
 export default function Portfolio() {
     const plausible = usePlausible()
     const autoplay = useRef(Autoplay({ delay: 2000 }));
+    const projects = useCMSData('projects');
 
     return (
         <>
@@ -33,7 +34,7 @@ export default function Portfolio() {
                                 <Stack justify="space-between" h="100%">
                                     <div>
                                         <Center>
-                                            <Image src={project.thumbnail} alt='' radius="md" className='portfolio-image' />
+                                            <Image src={`${base}/api/files/${project.collectionId}/${project.id}/${project.thumbnail}`} alt='' radius="md" className='portfolio-image' />
                                         </Center>
                                         {
                                             project?.tags?.map((tag, index) => (
@@ -42,7 +43,7 @@ export default function Portfolio() {
                                         }
                                         <Space h="xs" />
                                         <Title className='project-title'>{project.name}</Title>
-                                        <Text className='project-description'>{project.description}</Text>
+                                        <div className='project-description'>{project.description}</div>
                                     </div>
                                     <NavLink disabled={project.link ? false : true} href={project.link ? project.link : '#portfolio'} leftSection={<IconScreenShare />} label="Open Project" onClick={() => plausible('open-project', { props: { project: project.name } })} />
                                 </Stack>
