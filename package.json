@@ -9,10 +9,10 @@
 		"lint": "next lint"
 	},
 	"dependencies": {
-		"@mantine/carousel": "^7.9.2",
-		"@mantine/core": "^7.9.2",
-		"@mantine/hooks": "^7.9.2",
-		"@tabler/icons-react": "^3.4.0",
+		"@mantine/carousel": "^7.10.0",
+		"@mantine/core": "^7.10.0",
+		"@mantine/hooks": "^7.10.0",
+		"@tabler/icons-react": "^3.5.0",
 		"@tiptap/extension-link": "^2.4.0",
 		"@tiptap/react": "^2.4.0",
 		"@tiptap/starter-kit": "^2.4.0",
