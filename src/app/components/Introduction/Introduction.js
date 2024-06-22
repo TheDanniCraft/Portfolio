@@ -2,7 +2,7 @@
 import { Anchor, Button, Center, Grid, Group, Image, Stack, Text } from "@mantine/core";
 import Portait from "../../static/img/Portrait.png";
 import './Introduction.css';
-import { IconBrandDiscord, IconBrandGithub, IconBrandInstagram, IconBrandLinkedin, IconBrandThreads, IconBrandTwitch, IconBrandYoutube, IconCalendarMonth } from "@tabler/icons-react";
+import { IconBrandDiscord, IconBrandGithub, IconBrandInstagram, IconBrandThreads, IconBrandTwitch, IconBrandYoutube, IconCalendarMonth, IconBrandLinkedin } from "@tabler/icons-react";
 import { usePlausible } from "next-plausible";
 import { getCalApi } from "@calcom/embed-react";
 import { useEffect } from "react";
@@ -32,6 +32,9 @@ export default function Introduction() {
                         <Group className="socials">
                             <Anchor c="var(--mantine-color-text)" href="https://github.com/thedannicraft">
                                 <IconBrandGithub />
+                            </Anchor>
+                            <Anchor c="var(--mantine-color-text)" href="https://linkedin.com/in/thedannicraft/">
+                                <IconBrandLinkedin />
                             </Anchor>
                             <Anchor c="var(--mantine-color-text)" href="https://discord.gg/8CXEAFqhgE">
                                 <IconBrandDiscord />
