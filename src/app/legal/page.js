@@ -3,9 +3,19 @@
 import GlobalLayout from "@/app/components/GlobalLayout";
 import { Center, Divider, Title, Text, Anchor, Stack, Space, Button, List, ThemeIcon, rem } from "@mantine/core";
 import { IconMessageShare, IconWorld } from "@tabler/icons-react";
+import { useEffect } from "react";
 
 import './page.css';
+import { getCalApi } from "@calcom/embed-react";
+
 export default function Legal() {
+    useEffect(() => {
+        (async function () {
+            const cal = await getCalApi({});
+            cal("ui", { "hideEventTypeDetails": false, "layout": "month_view" });
+        })();
+    }, [])
+
     return (
         <GlobalLayout>
             <Center>
@@ -42,8 +52,7 @@ export default function Legal() {
                         </Text>
                     </Title>
 
-                    <Button leftSection={<IconMessageShare />} size="lg" className="contact" onClick={() => {
-                        window.$chatwoot.toggle();
+                    <Button leftSection={<IconMessageShare />} size="lg" className="contact" data-cal-namespace="" data-cal-link="thedannicraft/30min" data-cal-config='{"layout":"month_view"}' onClick={() => {
                         plausible('chat-open', { props: { context: 'legal' } })
                     }}>Open Chat</Button>
 

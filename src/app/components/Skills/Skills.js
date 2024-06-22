@@ -3,10 +3,19 @@ import './Skills.css';
 import { IconHeartHandshake } from "@tabler/icons-react";
 import { usePlausible } from "next-plausible";
 import { useCMSData } from '@/app/CMS'
+import { useEffect } from "react";
+import { getCalApi } from "@calcom/embed-react";
 
 export default function Skills() {
     const plausible = usePlausible();
     const skills = useCMSData('skills');
+
+    useEffect(() => {
+        (async function () {
+            const cal = await getCalApi({});
+            cal("ui", { "hideEventTypeDetails": false, "layout": "month_view" });
+        })();
+    }, [])
 
     return (
         <>
@@ -20,10 +29,9 @@ export default function Skills() {
                         My commitment to staying current with the latest technologies ensures that I deliver high-quality, innovative solutions that meet and exceed expectations.
                         Hiring me means bringing on board a proactive and adaptable professional committed to delivering exceptional results in software and game development.
                     </Text>
-                    <Button size="md" className="hire" leftSection={<IconHeartHandshake />} onClick={() => {
-                        window.$chatwoot.toggle();
+                    <Button size="md" className="hire" leftSection={<IconHeartHandshake />} data-cal-namespace="" data-cal-link="thedannicraft/30min" data-cal-config='{"layout":"month_view"}' onClick={() => {
                         plausible('chat-open', { props: { context: 'skills' } })
-                    }}>Hire Now!</Button>
+                    }}>Discuss my project</Button>
                 </Grid.Col>
                 <Grid.Col span={{ base: 12, sm: 5 }}>
                     {

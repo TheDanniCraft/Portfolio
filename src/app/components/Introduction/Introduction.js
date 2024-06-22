@@ -2,11 +2,19 @@
 import { Anchor, Button, Center, Grid, Group, Image, Stack, Text } from "@mantine/core";
 import Portait from "../../static/img/Portrait.png";
 import './Introduction.css';
-import { IconBrandDiscord, IconBrandGithub, IconBrandInstagram, IconBrandThreads, IconBrandTwitch, IconBrandYoutube, IconMessageShare } from "@tabler/icons-react";
+import { IconBrandDiscord, IconBrandGithub, IconBrandInstagram, IconBrandLinkedin, IconBrandThreads, IconBrandTwitch, IconBrandYoutube, IconCalendarMonth } from "@tabler/icons-react";
 import { usePlausible } from "next-plausible";
+import { getCalApi } from "@calcom/embed-react";
+import { useEffect } from "react";
 
 export default function Introduction() {
     const plausible = usePlausible()
+    useEffect(() => {
+        (async function () {
+            const cal = await getCalApi({});
+            cal("ui", { "hideEventTypeDetails": false, "layout": "month_view" });
+        })();
+    }, [])
 
     return (
         <Center>
@@ -42,10 +50,9 @@ export default function Introduction() {
                             </Anchor>
 
                         </Group>
-                        <Button leftSection={<IconMessageShare />} size="lg" className="contact" onClick={() => {
-                            window.$chatwoot.toggle();
+                        <Button leftSection={<IconCalendarMonth />} size="lg" className="contact" data-cal-namespace="" data-cal-link="thedannicraft/30min" data-cal-config='{"layout":"month_view"}' onClick={() => {
                             plausible('chat-open', { props: { context: 'introduction' } })
-                        }}>Contact</Button>
+                        }}>Get in Touch</Button>
                     </Stack>
                 </Grid.Col>
                 <Grid.Col span={{ base: 12, sm: 5 }} >
