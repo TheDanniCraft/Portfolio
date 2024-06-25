@@ -1,21 +1,11 @@
 "use client"
 
 import GlobalLayout from "@/app/components/GlobalLayout";
-import { Center, Divider, Title, Text, Anchor, Stack, Space, Button, List, ThemeIcon, rem } from "@mantine/core";
-import { IconMessageShare, IconWorld } from "@tabler/icons-react";
-import { useEffect } from "react";
+import { Center, Title, Text, Anchor, Stack, Space, Button, List, ThemeIcon, rem, useMantineColorScheme } from "@mantine/core";
 
 import './page.css';
-import { getCalApi } from "@calcom/embed-react";
 
 export default function Legal() {
-    useEffect(() => {
-        (async function () {
-            const cal = await getCalApi({});
-            cal("ui", { "hideEventTypeDetails": false, "layout": "month_view" });
-        })();
-    }, [])
-
     return (
         <GlobalLayout>
             <Center>
@@ -51,13 +41,6 @@ export default function Legal() {
                             Die unzulässige Verwendung dieser Informationen (Adresse, Name usw.) wird strafrechtlich verfolgt.
                         </Text>
                     </Title>
-
-                    <Button leftSection={<IconMessageShare />} size="lg" className="contact" data-cal-namespace="" data-cal-link="thedannicraft/30min" data-cal-config='{"layout":"month_view"}' onClick={() => {
-                        plausible('chat-open', { props: { context: 'legal' } })
-                    }}>Open Chat</Button>
-
-                    <Space />
-
                     <Title order={2}>Online dispute resolution – Online-Streitbeilegung
                         <Text>
                             The European Comission provides a platform for online dispute resolution, available <Anchor href="https://ec.europa.eu/consumers/odr/">here</Anchor> <br />
