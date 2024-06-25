@@ -30,7 +30,7 @@ export default function Introduction() {
                             <Anchor c="var(--mantine-color-text)" href="https://linkedin.com/in/thedannicraft/">
                                 <IconBrandLinkedin />
                             </Anchor>
-                            <Anchor c="var(--mantine-color-text)" href="https://discord.gg/8CXEAFqhgE">
+                            <Anchor c="var(--mantine-color-text)" href="https://discord.gg/f3VTeE3kaP">
                                 <IconBrandDiscord />
                             </Anchor>
                             <Anchor c="var(--mantine-color-text)" href="https://youtube.com/thedannicraft">

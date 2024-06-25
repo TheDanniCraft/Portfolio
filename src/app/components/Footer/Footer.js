@@ -39,7 +39,7 @@ export default function Footer() {
                     <Anchor href="https://github.com/thedannicraft" c="var(--mantine-color-text)" underline='never'>
                         Github
                     </Anchor>
-                    <Anchor href="https://discord.gg/8CXEAFqhgE" c="var(--mantine-color-text)" underline='never'>
+                    <Anchor href="https://discord.gg/f3VTeE3kaP" c="var(--mantine-color-text)" underline='never'>
                         Discord
                     </Anchor>
                     <Anchor href="https://youtube.com/thedannicraft" c="var(--mantine-color-text)" underline='never'>
