@@ -80,11 +80,13 @@ export default function Legal() {
                     <List size="ls" withPadding>
                         <List.Item><Anchor href="https://thedannicraft.de">TheDanniCraft.de</Anchor></List.Item>
                         <List.Item><Anchor href="https://github.com/TheDanniCraft">Github.com/TheDanniCraft</Anchor></List.Item>
-                        <List.Item><Anchor href="https://Discord.gg/8CXEAFqhgE">Discord.gg/8CXEAFqhgE</Anchor></List.Item>
+                        <List.Item><Anchor href="https://linkedin.com/in/TheDanniCraft">Linkedin.com/in/TheDanniCraft</Anchor></List.Item>
+                        <List.Item><Anchor href="https://threads.net/TheDanniCraft">Threads.net/TheDanniCraft</Anchor></List.Item>
+                        <List.Item><Anchor href="https://discord.gg/f3VTeE3kaP">Discord.gg/f3VTeE3kaP</Anchor></List.Item>
                         <List.Item><Anchor href="https://youtube.com/thedannicraft">Youtube.com/TheDanniCraft</Anchor></List.Item>
                         <List.Item><Anchor href="https://twitch.tv/TheDanniCraft">Twitch.tv/TheDanniCraft</Anchor></List.Item>
-                        <List.Item><Anchor href="https://Instagram.com/TheDanniCraft">Instagram.com/TheDanniCraft</Anchor></List.Item>
-                        <List.Item><Anchor href="https://Threads.net/TheDanniCraft">Threads.net/TheDanniCraft</Anchor></List.Item>
+                        <List.Item><Anchor href="https://instagram.com/TheDanniCraft">Instagram.com/TheDanniCraft</Anchor></List.Item>
+                        <List.Item><Anchor href="https://threads.net/TheDanniCraft">Threads.net/TheDanniCraft</Anchor></List.Item>
                     </List>
                 </Stack>
             </Center>
