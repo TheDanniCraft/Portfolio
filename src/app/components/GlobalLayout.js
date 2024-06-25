@@ -4,7 +4,6 @@ import Link from "next/link"
 import Footer from '@/app/components/Footer/Footer';
 import { Fragment } from "react"
 import { IconArrowUp, IconDownload, IconMoon, IconPaintFilled, IconSun } from "@tabler/icons-react";
-import ChatwootWidget from "./ChatwootWidget";
 
 import { useTheme } from '@/app/Theme';
 import { useCMSData } from '@/app/CMS'
@@ -76,9 +75,6 @@ export default function GlobalLayout({ children }) {
 
                 <Space h="md" />
                 <Footer />
-                <Fragment>
-                    <ChatwootWidget />
-                </Fragment>
             </AppShell.Main>
 
             <Affix position={{ bottom: 20, left: 20 }}>

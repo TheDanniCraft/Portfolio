@@ -8,10 +8,6 @@ body {
 	padding: 1rem;
 }
 
-.woot-widget-bubble {
-	background: var(--mantine-primary-color-8) !important;
-}
-
 .seperator {
 	height: 8vw;
 }
