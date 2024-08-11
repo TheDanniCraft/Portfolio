@@ -61,7 +61,7 @@ export default function Legal() {
                         </Text>
                     </Title>
                     <List size="ls" withPadding>
-                        <List.Item><Anchor href="https://thedannicraft.de">TheDanniCraft.de</Anchor></List.Item>
+                        <List.Item><Anchor href="https://thedannicraft.de">TheDanniCraft.de (Including all subdomains)</Anchor></List.Item>
                         <List.Item><Anchor href="https://github.com/TheDanniCraft">Github.com/TheDanniCraft</Anchor></List.Item>
                         <List.Item><Anchor href="https://linkedin.com/in/TheDanniCraft">Linkedin.com/in/TheDanniCraft</Anchor></List.Item>
                         <List.Item><Anchor href="https://threads.net/TheDanniCraft">Threads.net/TheDanniCraft</Anchor></List.Item>
