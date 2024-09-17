@@ -20,7 +20,7 @@
 		"dayjs": "^1.11.13",
 		"embla-carousel-autoplay": "^8.2.1",
 		"embla-carousel-react": "^8.2.1",
-		"next": "14.1.4",
+		"next": "14.2.12",
 		"next-plausible": "^3.12.2",
 		"pocketbase": "^0.21.5",
 		"react": "^18",
@@ -30,7 +30,7 @@
 	"devDependencies": {
 		"autoprefixer": "^10.4.20",
 		"eslint": "^8",
-		"eslint-config-next": "14.1.4",
+		"eslint-config-next": "14.2.12",
 		"postcss": "^8.4.45",
 		"postcss-preset-mantine": "^1.17.0",
 		"postcss-simple-vars": "^7.0.1",
