@@ -9,7 +9,7 @@
 		"lint": "next lint"
 	},
 	"dependencies": {
-		"@calcom/embed-react": "^1.5.0",
+		"@calcom/embed-react": "^1.5.1",
 		"@mantine/carousel": "^7.12.2",
 		"@mantine/core": "^7.12.2",
 		"@mantine/hooks": "^7.12.2",
