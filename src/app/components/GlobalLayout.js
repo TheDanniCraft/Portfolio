@@ -45,7 +45,7 @@ export default function GlobalLayout({ children }) {
                         </Group>
                         <Link href="https://cdn.thedannicraft.de/CV-TheDanniCraft.pdf" target='_blank' onClick={() => plausible('cv-download')} >
                             <Button variant='outline' leftSection={<IconDownload />} visibleFrom="sm">
-                                Downlaod CV
+                                Download CV
                             </Button>
                         </Link>
                     </Group>
