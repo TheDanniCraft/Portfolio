@@ -27,12 +27,14 @@ My personal portfolio to showcase myself on the internet
 
 **Deployment** - [Github Pages](https://pages.github.com/)
 
+**Package Manager** - [Bun](https://bun.sh)
+
 ## Running Locally
 
 Clone the project
 
 ```bash
-https://github.com/TheDanniCraft/Portfolio.git
+git clone https://github.com/TheDanniCraft/Portfolio.git
 ```
 
 Go to the project directory
@@ -50,13 +52,13 @@ git remote remove origin
 Install dependencies
 
 ```bash
-npm install
+bun install
 ```
 
 Start the server
 
 ```bash
-npm run dev
+bun run dev
 ```
 
 ## Author
