@@ -2,7 +2,7 @@
 
 ![Portfolio](https://cdn.thedannicraft.de/Portfolio.png)
 
-![react](https://img.shields.io/badge/Built%20with-React-blue?style=for-the-badge)
+![React](https://img.shields.io/badge/Built%20with-React-blue?style=for-the-badge)
 [![Deploy Status](https://img.shields.io/github/actions/workflow/status/TheDanniCraft/Portfolio/nextjs.yml?style=for-the-badge)](https://github.com/TheDanniCraft/Portfolio)
 ![Version](https://img.shields.io/github/package-json/v/TheDanniCraft/Portfolio?style=for-the-badge)
 ![Gitmoji](https://img.shields.io/badge/gitmoji-%20😜%20😍-FFDD67.svg?style=for-the-badge)
@@ -63,4 +63,4 @@ bun run dev
 
 ## Author
 
-- [@thedannicraft](https://´github.com/thedannicraft)
+- [@thedannicraft](https://github.com/thedannicraft)
