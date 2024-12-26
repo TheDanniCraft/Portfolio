@@ -10,9 +10,9 @@
 	},
 	"dependencies": {
 		"@calcom/embed-react": "^1.5.2",
-		"@mantine/carousel": "^7.15.1",
-		"@mantine/core": "^7.15.1",
-		"@mantine/hooks": "^7.15.1",
+		"@mantine/carousel": "^7.15.2",
+		"@mantine/core": "^7.15.2",
+		"@mantine/hooks": "^7.15.2",
 		"@tabler/icons-react": "^3.26.0",
 		"@tiptap/extension-link": "^2.10.4",
 		"@tiptap/react": "^2.10.4",
