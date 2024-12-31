@@ -9,7 +9,7 @@ export default function Footer() {
     const [statusText, setStatusText] = useState("Loading...");
 
     useEffect(() => {
-        axios.get('https://n8n.thedannicraft.de/webhook/80d512f5-dbab-4939-81ad-85d5b04ee1a8', {
+        axios.get('https://api.status.thedannicraft.de', {
 
         })
             .then(response => {
