@@ -21,7 +21,7 @@
 		"dayjs": "^1.11.13",
 		"embla-carousel-autoplay": "^8.5.1",
 		"embla-carousel-react": "^8.5.1",
-		"next": "14.2.20",
+		"next": "14.2.22",
 		"next-plausible": "^3.12.4",
 		"pocketbase": "^0.21.5",
 		"react": "^18",
