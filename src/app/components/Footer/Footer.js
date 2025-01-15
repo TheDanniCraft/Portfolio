@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import './Footer.css';
-import { Flex, Stack, Title, Anchor, Space, Image, rem, Center } from "@mantine/core";
+import { Flex, Stack, Title, Anchor, Space } from "@mantine/core";
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 

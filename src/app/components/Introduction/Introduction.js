@@ -1,5 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
-import { Anchor, Button, Center, Grid, Group, Image, Stack, Text } from "@mantine/core";
+import { Anchor, Button, Center, Grid, Group, Image, Space, Stack, Text } from "@mantine/core";
 import Portait from "../../static/img/Portrait.png";
 import './Introduction.css';
 import { IconBrandDiscord, IconBrandGithub, IconBrandInstagram, IconBrandThreads, IconBrandTwitch, IconBrandYoutube, IconCalendarMonth, IconBrandLinkedin } from "@tabler/icons-react";
@@ -22,6 +22,7 @@ export default function Introduction() {
                     <Text>
                         for over 5 years now. I started my journey on a discord server selling simple discord bots. Later, I moved to Fiverr and added website development to my portfolio.
                     </Text>
+                    <Space h="xs" />
                     <Stack justify="space-between" align="flex-start">
                         <Group className="socials">
                             <Anchor c="var(--mantine-color-text)" href="https://github.com/thedannicraft">

@@ -1,4 +1,4 @@
-import { Button, Grid, Group, NumberFormatter, Progress, Text, Title } from "@mantine/core";
+import { Button, Grid, Group, NumberFormatter, Progress, Space, Text, Title } from "@mantine/core";
 import './Skills.css';
 import { IconHeartHandshake } from "@tabler/icons-react";
 import { usePlausible } from "next-plausible";
@@ -22,6 +22,7 @@ export default function Skills() {
                         My commitment to staying current with the latest technologies ensures that I deliver high-quality, innovative solutions that meet and exceed expectations.
                         Hiring me means bringing on board a proactive and adaptable professional committed to delivering exceptional results in software and game development.
                     </Text>
+                    <Space h="xs" />
                     <Button size="md" className="hire" leftSection={<IconHeartHandshake />} data-cal-namespace="" data-cal-link="thedannicraft/free" data-cal-config='{"layout":"month_view"}' onClick={() => {
                         plausible('cal-open', { props: { context: 'skills' } })
                     }}>Discuss my project</Button>

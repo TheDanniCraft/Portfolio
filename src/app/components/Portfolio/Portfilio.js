@@ -36,6 +36,7 @@ export default function Portfolio() {
                                         <Center>
                                             <Image src={`${base}/api/files/${project.collectionId}/${project.id}/${project.thumbnail}`} alt='' radius="md" className='portfolio-image' />
                                         </Center>
+                                        <Space h="xs" />
                                         {
                                             project?.tags?.map((tag, index) => (
                                                 <Pill key={index} c="var(--mantine-primary-color-5)" className='tag'>{tag}</Pill>
