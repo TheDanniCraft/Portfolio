@@ -17,7 +17,7 @@
 		"@tiptap/extension-link": "^2.11.0",
 		"@tiptap/react": "^2.11.0",
 		"@tiptap/starter-kit": "^2.11.0",
-		"axios": "^1.7.9",
+		"axios": "^1.8.2",
 		"dayjs": "^1.11.13",
 		"embla-carousel-autoplay": "^8.5.2",
 		"embla-carousel-react": "^8.5.2",
