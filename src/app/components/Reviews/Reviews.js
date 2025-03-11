@@ -83,7 +83,7 @@ export default function Reviews() {
                                         <Group>
                                             <Avatar radius="xl" />
                                             {review.name}
-                                            <Avatar src={`https://raw.githubusercontent.com/TheDanniCraft/FlagSVG/master/src/exported/${review.country}.svg`} radius="sm" size="sm" />
+                                            <Avatar src={`https://raw.githubusercontent.com/TheDanniCraft/FlagSVG/master/src/exported/${review.country}.svg`} radius="sm" size="sm" alt={`flag-${review.country}`} />
                                         </Group>
                                         <Divider my="sm" />
                                         <Rating value={review.stars} fractions={1} readOnly size="sm" />

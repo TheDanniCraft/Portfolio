@@ -95,7 +95,7 @@ export default function Footer() {
             <Flex justify="center" >
                 <Anchor href="https://status.thedannicraft.de" underline='never' c="var(--mantine-color-text)">
                     <Flex align="center" className="statusBadge">
-                        <svg width="25px" height="auto" viewBox="0 0 1080 1080" version="1.1" style={{ fill: `${statusColor}`, fillRule: 'evenodd', clipRule: 'evenodd', strokeLinejoin: 'round', strokeMiterlimit: 2 }}>
+                        <svg width="25px" viewBox="0 0 1080 1080" version="1.1" style={{ fill: `${statusColor}`, fillRule: 'evenodd', clipRule: 'evenodd', strokeLinejoin: 'round', strokeMiterlimit: 2 }}>
                             <g transform="matrix(0.925926,0,0,0.925926,40,40)">
                                 <g transform="matrix(1.55975,0,0,1.55975,-52.0755,-337.358)">
                                     <circle cx="379.597" cy="562.5" r="346.21" style={{ fillOpacity: 0.75 }} />
