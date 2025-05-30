@@ -9,7 +9,7 @@ export default function Footer() {
     const [statusText, setStatusText] = useState("Loading...");
 
     useEffect(() => {
-        axios.get('https://api.status.thedannicraft.de', {
+        axios.get('https://api.status.thedannicraft.de/thedannicraft', {
 
         })
             .then(response => {
