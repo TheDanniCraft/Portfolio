@@ -13,7 +13,7 @@
 		"@mantine/carousel": "^7.17.8",
 		"@mantine/core": "^7.17.8",
 		"@mantine/hooks": "^7.17.8",
-		"@tabler/icons-react": "^3.34.0",
+		"@tabler/icons-react": "^3.34.1",
 		"@tiptap/extension-link": "^2.26.1",
 		"@tiptap/react": "^2.26.1",
 		"@tiptap/starter-kit": "^2.26.1",
