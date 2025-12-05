@@ -43,7 +43,7 @@ export default function GlobalLayout({ children }) {
                                 ))
                             }
                         </Group>
-                        <Link href="https://cdn.thedannicraft.de/3nGrZytL6OFt.pdf" target='_blank' onClick={() => plausible('cv-download')} >
+                        <Link href="https://storage.cloud.thedannicraft.de/assets/CV-TheDanniCraft.pdf" target='_blank' onClick={() => plausible('cv-download')} >
                             <Button variant='outline' leftSection={<IconDownload />} visibleFrom="sm">
                                 Download CV
                             </Button>
@@ -61,7 +61,7 @@ export default function GlobalLayout({ children }) {
                     ))
                 }
                 <Divider my="md" />
-                <Link href="https://cdn.thedannicraft.de/3nGrZytL6OFt.pdf" target='_blank' onClick={() => plausible('cv-download')} >
+                <Link href="https://storage.cloud.thedannicraft.de/assets/CV-TheDanniCraft.pdf" target='_blank' onClick={() => plausible('cv-download')} >
                     <Button variant='outline' leftSection={<IconDownload />} fullWidth>
                         Downlaod CV
                     </Button>

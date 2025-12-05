@@ -1,6 +1,6 @@
 # Portfolio
 
-![Portfolio](https://cdn.thedannicraft.de/Portfolio.png)
+![Portfolio](https://storage.cloud.thedannicraft.de/assets/Portfolio.png)
 
 ![React](https://img.shields.io/badge/Built%20with-React-blue?style=for-the-badge)
 [![Deploy Status](https://img.shields.io/github/actions/workflow/status/TheDanniCraft/Portfolio/nextjs.yml?style=for-the-badge)](https://github.com/TheDanniCraft/Portfolio)
