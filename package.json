@@ -13,7 +13,7 @@
 		"@mantine/carousel": "^7.17.8",
 		"@mantine/core": "^7.17.8",
 		"@mantine/hooks": "^7.17.8",
-		"@tabler/icons-react": "^3.35.0",
+		"@tabler/icons-react": "^3.36.0",
 		"@tiptap/extension-link": "^2.27.1",
 		"@tiptap/react": "^2.27.1",
 		"@tiptap/starter-kit": "^2.27.1",
@@ -29,7 +29,7 @@
 		"sharp": "^0.33.5"
 	},
 	"devDependencies": {
-		"autoprefixer": "^10.4.22",
+		"autoprefixer": "^10.4.23",
 		"eslint": "^8",
 		"eslint-config-next": "15.5.2",
 		"postcss": "^8.5.6",
