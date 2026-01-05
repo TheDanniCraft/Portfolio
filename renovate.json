@@ -2,5 +2,71 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "config:recommended"
+  ],
+  "rangeStrategy": "bump",
+  "branchPrefix": "renovate/",
+  "additionalBranchPrefix": "{{{manager}}}/",
+  "labels": ["dependencies", "renovate"],
+  "commitMessagePrefix": "⬆️ Bump ",
+  "commitMessageAction": "",
+  "commitMessageTopic": "{{depName}}",
+  "commitMessageExtra": " to {{newVersion}}",
+  "packageRules": [
+    {
+      "matchPackagePatterns": ["^next$", "^react$", "^react-dom$", "^eslint-config-next$", "^next-"],
+      "groupName": "next/react ecosystem"
+    },
+    {
+      "matchPackagePatterns": ["^@mantine/"],
+      "groupName": "mantine monorepo"
+    },
+    {
+      "matchPackagePatterns": ["^@tiptap/"],
+      "groupName": "tiptap editor"
+    },
+    {
+      "matchPackagePatterns": ["^embla-carousel-", "^@mantine/carousel$"],
+      "groupName": "carousel (embla/mantine)"
+    },
+    {
+      "matchPackagePatterns": ["^tailwindcss$", "^postcss", "^postcss-", "^autoprefixer$"],
+      "groupName": "css tooling"
+    },
+    {
+      "matchPackagePatterns": ["^@tabler/icons-react$"],
+      "groupName": "tabler icons"
+    },
+    {
+      "matchPackagePatterns": ["^@calcom/embed-react$"],
+      "groupName": "cal.com embed"
+    },
+    {
+      "matchPackagePatterns": ["^next-plausible$"],
+      "groupName": "analytics (plausible)"
+    },
+    {
+      "matchPackagePatterns": ["^pocketbase$"],
+      "groupName": "pocketbase"
+    },
+    {
+      "matchPackagePatterns": ["^sharp$"],
+      "groupName": "image processing (sharp)"
+    },
+    {
+      "matchPackagePatterns": ["^axios$"],
+      "groupName": "http client"
+    },
+    {
+      "matchPackagePatterns": ["^dayjs$"],
+      "groupName": "dates (dayjs)"
+    },
+    {
+      "matchPackagePatterns": ["^eslint$"],
+      "groupName": "eslint"
+    },
+    {
+      "matchManagers": ["github-actions"],
+      "groupName": "github actions"
+    }
   ]
 }
