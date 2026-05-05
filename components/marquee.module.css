@@ -1,0 +1,62 @@
+@keyframes marqueeHorizontal {
+	from {
+		transform: translate3d(0, 0, 0);
+	}
+	to {
+		transform: translate3d(-50%, 0, 0);
+	}
+}
+
+@keyframes marqueeHorizontalReverse {
+	from {
+		transform: translate3d(-50%, 0, 0);
+	}
+	to {
+		transform: translate3d(0, 0, 0);
+	}
+}
+
+@keyframes marqueeVertical {
+	from {
+		transform: translate3d(0, 0, 0);
+	}
+	to {
+		transform: translate3d(0, -50%, 0);
+	}
+}
+
+@keyframes marqueeVerticalReverse {
+	from {
+		transform: translate3d(0, -50%, 0);
+	}
+	to {
+		transform: translate3d(0, 0, 0);
+	}
+}
+
+.marqueeHorizontal,
+.marqueeHorizontalReverse,
+.marqueeVertical,
+.marqueeVerticalReverse {
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+	will-change: transform;
+	backface-visibility: hidden;
+	transform: translate3d(0, 0, 0);
+}
+
+.marqueeHorizontal {
+	animation-name: marqueeHorizontal;
+}
+
+.marqueeHorizontalReverse {
+	animation-name: marqueeHorizontalReverse;
+}
+
+.marqueeVertical {
+	animation-name: marqueeVertical;
+}
+
+.marqueeVerticalReverse {
+	animation-name: marqueeVerticalReverse;
+}
