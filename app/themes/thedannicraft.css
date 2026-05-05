@@ -3,7 +3,7 @@
  * Add this to your global.css after importing @heroui/styles
  * Only includes base variables from variables.css
  * @see https://heroui.com/docs/react/getting-started/theming
- * https://heroui.com/themes?hue=20.65888714218184&chroma=0.21719084500659672&lightness=0.6166879544458042&base=0&formRadius=medium
+ * https://heroui.com/themes?hue=20.65888714218184&chroma=0.21719084500659672&lightness=0.6166879544458042&base=0&formRadius=medium&radius=extra-small
  */
 
 :root,
@@ -44,7 +44,7 @@
 	--warning-foreground: oklch(21.03% 0.0059 44.35);
 
 	/* Border Radius */
-	--radius: 0.5rem;
+	--radius: 0.125rem;
 	--field-radius: 0.5rem;
 
 	/* Font Family */
