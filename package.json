@@ -7,7 +7,8 @@
     "app:build": "next build",
     "app:start": "next start",
     "app:lint": "eslint .",
-    "app:typecheck": "tsc --noEmit"
+    "app:typecheck": "tsc --noEmit",
+    "postinstall": "bun scripts/copy-pdf-worker.mjs"
   },
   "dependencies": {
     "@gravity-ui/icons": "^2.18.0",
