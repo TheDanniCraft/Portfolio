@@ -11,6 +11,7 @@ import { useSyncExternalStore } from "react";
 
 const navItems = [
 	{ href: "/work", label: "Work" },
+	{ href: "/case-studies", label: "Case Studies" },
 	{ href: "/testimonials", label: "Testimonials" },
 	{ href: "/contact", label: "Contact" },
 ];

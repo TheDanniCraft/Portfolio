@@ -1,11 +1,6 @@
 import { buttonVariants, Card, Link as HeroLink } from "@heroui/react";
 import { testimonials } from "@/lib/site-content";
-
-const testimonialStats = [
-	{ value: "98%", label: "Client Retention" },
-	{ value: "150+", label: "Global Launches" },
-	{ value: "12", label: "Design Awards" },
-];
+import { caseStudyProjects } from "@/lib/projects";
 
 export default function TestimonialsPage() {
 	return (
@@ -32,11 +27,17 @@ export default function TestimonialsPage() {
 			</section>
 
 			<section className='mx-auto w-full max-w-6xl px-6 py-10'>
+				<div className='mb-8 max-w-2xl'>
+					<p className='text-xs font-bold uppercase tracking-[0.26em] text-accent'>Behind the work</p>
+					<h2 className='mt-3 text-4xl font-black sm:text-5xl'>Selected case studies</h2>
+				</div>
 				<div className='grid gap-5 md:grid-cols-3'>
-					{testimonialStats.map((stat) => (
-						<Card className='border border-border bg-surface p-10 text-center' key={stat.label}>
-							<p className='text-6xl font-black text-accent'>{stat.value}</p>
-							<p className='mt-3 text-xs font-bold uppercase tracking-[0.18em] text-muted'>{stat.label}</p>
+					{caseStudyProjects.map((project) => (
+						<Card className='border border-border bg-surface p-7' key={project.slug}>
+							<p className='text-xs font-bold uppercase tracking-[0.18em] text-accent'>{project.caseStudy?.eyebrow}</p>
+							<h3 className='mt-4 text-2xl font-black'>{project.title}</h3>
+							<p className='mt-3 text-sm leading-6 text-muted'>{project.summary}</p>
+							<HeroLink className='mt-6 text-sm font-bold text-accent' href={`/work/${project.slug}`}>Read case study</HeroLink>
 						</Card>
 					))}
 				</div>
