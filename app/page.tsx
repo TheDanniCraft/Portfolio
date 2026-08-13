@@ -1,9 +1,11 @@
 import { buttonVariants, Card, Link } from "@heroui/react";
 import { AvailabilityIndicator } from "@/components/availability-indicator";
 import { CvModalButton } from "@/components/cv-modal-button";
-import { capabilities, profile, projects, shippedProjectsStat, testimonials, tools } from "@/lib/site-content";
+import { capabilities, profile, shippedProjectsStat, testimonials, tools } from "@/lib/site-content";
+import { projects } from "@/lib/projects";
 import { ProjectInquiryForm } from "@/components/project-inquiry-form";
 import { Marquee } from "@/components/marquee";
+import { ProjectImage } from "@/components/project-image";
 
 export default function Home() {
 	const featuredProjects = projects.filter((project) => project.featured);
@@ -98,7 +100,7 @@ export default function Home() {
 
 						return (
 							<Card className={`overflow-hidden border border-border bg-surface p-0 ${isLastOddItem ? "md:col-span-2" : ""}`} key={project.title} role='article'>
-								<div aria-label={`${project.title} placeholder`} className='aspect-video bg-cover bg-center' style={{ backgroundImage: `url('${project.image}')` }} />
+							<ProjectImage alt={project.imageAlt} className='aspect-video' position={project.imagePosition} sizes='(min-width: 768px) 50vw, 100vw' src={project.image} />
 
 								<Card.Content className='grid gap-4 p-6'>
 									<div className='flex flex-wrap gap-2'>
@@ -114,9 +116,9 @@ export default function Home() {
 										<Card.Description className='mt-2 text-sm leading-6 text-muted'>{project.description}</Card.Description>
 									</Card.Header>
 
-									<a className='w-fit text-sm font-bold text-accent hover:underline' href='#contact'>
-										Discuss Project
-									</a>
+									<Link className='w-fit text-sm font-bold text-accent hover:underline' href={project.caseStudy ? `/work/${project.slug}` : project.links[0]?.href ?? "/contact"}>
+										{project.caseStudy ? "View case study" : project.links[0]?.label ?? "Discuss project"}
+									</Link>
 								</Card.Content>
 							</Card>
 						);
