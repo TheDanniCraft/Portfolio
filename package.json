@@ -16,6 +16,7 @@
     "@heroui/styles": "^3.0.3",
     "@icons-pack/react-simple-icons": "^13.13.0",
     "@number-flow/react": ">=0.5.0",
+    "cap-widget": "^0.1.56",
     "embla-carousel": ">=8.6.0",
     "embla-carousel-react": ">=8.6.0",
     "motion": ">=12.12.0",
@@ -29,7 +30,8 @@
     "react-resizable-panels": ">=4.10.0",
     "recharts": ">=2.0.0",
     "tailwind-merge": ">=3.4.0",
-    "tailwind-variants": ">=3.2.0"
+    "tailwind-variants": ">=3.2.0",
+    "zod": "^4.4.3"
   },
   "devDependencies": {
     "@babel/core": "^7.29.0",

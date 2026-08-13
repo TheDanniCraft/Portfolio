@@ -2,9 +2,10 @@
 
 import { Calendar } from "@gravity-ui/icons";
 import { Button, buttonVariants, Card, FieldError, Form, Input, Label, ListBox, Modal, Select, TextArea, TextField } from "@heroui/react";
-import Script from "next/script";
-import { type FormEvent, useRef, useState } from "react";
+import { type FormEvent, useEffect, useRef, useState } from "react";
 import { Link } from "react-aria-components";
+import { submitInquiry } from "@/app/actions/submit-inquiry";
+import type { CapWidget } from "cap-widget";
 
 type ProjectInquiryFormProps = {
 	className?: string;
@@ -22,24 +23,45 @@ const subjectOptions = [
 const capBaseUrl = "https://challenge.cloud.thedannicraft.de";
 const capEndpoint = `${capBaseUrl}/03d619b86e/`;
 const labelClassName = "text-[0.68rem] font-bold uppercase tracking-[0.18em] text-muted";
-const n8nWebhookPath = process.env.NODE_ENV === "production" ? "webhook" : "webhook-test";
-const n8nWebhookUrl = `https://n8n.thedannicraft.de/${n8nWebhookPath}/ec21b409-0511-42e8-8863-82452c75f55c`;
 
 type SubmitState = "idle" | "verifying" | "submitting" | "success" | "error";
-
-type N8nResponse = {
-	message?: string;
-	success?: boolean | string;
-};
 
 export function ProjectInquiryForm({ className, mode = "compact", showFooter = true }: ProjectInquiryFormProps) {
 	const isFull = mode === "full";
 	const messageRows = isFull ? 7 : 5;
-	const capWidgetRef = useRef<HTMLElement | null>(null);
+	const capWidgetRef = useRef<CapWidget | null>(null);
 	const capTokenRef = useRef("");
 	const [capToken, setCapToken] = useState("");
 	const [submitState, setSubmitState] = useState<SubmitState>("idle");
 	const [message, setMessage] = useState("");
+
+	useEffect(() => {
+		window.CAP_CUSTOM_WASM_URL = `${capBaseUrl}/assets/cap_wasm.js`;
+		let observer: IntersectionObserver | null = null;
+
+		import("cap-widget")
+			.then(() => customElements.whenDefined("cap-widget"))
+			.then(() => {
+				if (!capWidgetRef.current) return;
+
+				observer = new IntersectionObserver(
+					(entries) => {
+						if (entries[0].isIntersecting) {
+							capWidgetRef.current?.solve();
+							observer?.disconnect();
+						}
+					},
+					{ rootMargin: "50px" }
+				);
+
+				observer.observe(capWidgetRef.current);
+			})
+			.catch(console.error);
+
+		return () => {
+			if (observer) observer.disconnect();
+		};
+	}, []);
 
 	const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
@@ -54,31 +76,23 @@ export function ProjectInquiryForm({ className, mode = "compact", showFooter = t
 			return;
 		}
 
+		// Ensure token is in the FormData
+		if (!formData.has("cap-token")) {
+			formData.append("cap-token", token);
+		} else {
+			formData.set("cap-token", token);
+		}
+
 		setSubmitState("submitting");
 		setMessage("Sending your inquiry...");
 
-		const payload = {
-			...Object.fromEntries(formData.entries()),
-			"cap-token": token,
-		};
-
 		try {
-			const response = await fetch(n8nWebhookUrl, {
-				method: "POST",
-				headers: {
-					"Content-Type": "application/json",
-				},
-				body: JSON.stringify(payload),
-			});
+			const result = await submitInquiry(formData);
 
-			const responseText = await response.text();
-			const result = responseText ? (JSON.parse(responseText) as N8nResponse) : null;
-			const isSuccess = result?.success === true || result?.success === "true";
-
-			if (!response.ok || !isSuccess) {
-				const detail = result?.message || responseText;
-
-				throw new Error(`n8n webhook responded with ${response.status} ${response.statusText}${detail ? `: ${detail}` : ""}`);
+			if (!result.success) {
+				setSubmitState("error");
+				setMessage(result.message || "The inquiry could not be sent. Please try again.");
+				return;
 			}
 
 			form.reset();
@@ -86,20 +100,16 @@ export function ProjectInquiryForm({ className, mode = "compact", showFooter = t
 			setCapToken("");
 			setSubmitState("success");
 			setMessage("Inquiry sent. I will reply with the next step.");
-			(capWidgetRef.current as { reset?: () => void } | null)?.reset?.();
+			capWidgetRef.current?.reset();
 		} catch (error) {
 			const errorMessage = error instanceof Error ? error.message : "Unknown error";
-
 			setSubmitState("error");
-			setMessage(errorMessage.includes("Failed to fetch") ? "The webhook request was blocked or could not be reached. Check n8n CORS and that the test webhook is listening." : "The inquiry could not be sent. Please try again.");
+			setMessage("An unexpected error occurred. Please try again.");
 		}
 	};
 
 	return (
 		<Card className={`border border-border bg-surface p-6 text-left sm:p-8 ${className ?? ""}`}>
-			<Script id='cap-wasm-url' strategy='afterInteractive'>{`window.CAP_CUSTOM_WASM_URL = "${capBaseUrl}/assets/cap_wasm.js";`}</Script>
-			<Script src={`${capBaseUrl}/assets/widget.js`} strategy='afterInteractive' />
-
 			<Form aria-label='Project inquiry' className='grid gap-5' onSubmit={handleSubmit}>
 				<div className='grid gap-5 sm:grid-cols-2'>
 					<TextField isRequired name='name' type='text'>
