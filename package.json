@@ -3,10 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "eslint"
+    "app:dev": "infisical run --env=dev --watch -- next dev",
+    "app:build": "next build",
+    "app:start": "next start",
+    "app:lint": "eslint .",
+    "app:typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@gravity-ui/icons": "^2.18.0",

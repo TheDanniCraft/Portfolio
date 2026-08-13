@@ -7,6 +7,7 @@ const plausibleScriptName = process.env.NEXT_PUBLIC_PLAUSIBLE_SCRIPT_NAME ?? pro
 
 const nextConfig: NextConfig = {
 	output: "standalone",
+	allowedDevOrigins: ["*.coder.cloud.thedannicraft.de"],
 };
 
 export default withPlausibleProxy({
