@@ -19,7 +19,7 @@ export default function Home() {
 						<AvailabilityIndicator compact />
 					</div>
 
-					<h1 className='max-w-2xl text-6xl font-black leading-[0.92] tracking-normal sm:text-7xl lg:text-8xl'>
+					<h1 className='max-w-2xl text-5xl font-black leading-[0.92] tracking-normal min-[450px]:text-6xl sm:text-7xl lg:text-8xl'>
 						I build <span className='text-accent'>resilient</span> digital structures.
 					</h1>
 
@@ -37,17 +37,19 @@ export default function Home() {
 					</div>
 				</div>
 
-				<div className='relative min-h-100 md:min-h-140'>
-					<Card className='absolute right-0 top-0 h-100 w-[88%] overflow-hidden border border-border bg-surface p-0 md:h-136'>
-						<div aria-label='Portrait placeholder' className='h-full w-full bg-cover bg-center' style={{ backgroundImage: `url('${profile.portrait}')` }} />
-					</Card>
+				<div className='relative mt-12 w-full md:mt-0'>
+					<div className='relative ml-auto w-[75%] sm:w-[60%] md:w-[88%]'>
+						<Card className='aspect-[4/5] w-full overflow-hidden border border-border bg-surface p-0'>
+							<div aria-label='Portrait placeholder' className='h-full w-full bg-cover bg-center' style={{ backgroundImage: `url('${profile.portrait}')` }} />
+						</Card>
 
-					<Card className='absolute -bottom-8 left-0 w-[56%] max-w-56 border border-border bg-surface p-5 shadow-2xl shadow-black/30 sm:-bottom-10 sm:left-2 sm:w-[50%] md:-bottom-12 md:w-[40%]'>
-						<Card.Content className='grid gap-2 p-0'>
-							<p className='text-3xl font-black leading-none text-accent sm:text-4xl'>{shippedProjectsStat.value}</p>
-							<p className='text-[0.65rem] font-semibold uppercase tracking-[0.24em] text-muted'>{shippedProjectsStat.label}</p>
-						</Card.Content>
-					</Card>
+						<Card className='absolute -bottom-6 -left-8 w-48 border border-border bg-surface p-5 shadow-2xl shadow-black/30 sm:-bottom-10 sm:-left-24 sm:w-52 md:-bottom-12 md:-left-16 md:w-56 lg:-left-24'>
+							<Card.Content className='grid gap-2 p-0'>
+								<p className='text-3xl font-black leading-none text-accent sm:text-4xl'>{shippedProjectsStat.value}</p>
+								<p className='text-[0.65rem] font-semibold uppercase tracking-[0.24em] text-muted'>{shippedProjectsStat.label}</p>
+							</Card.Content>
+						</Card>
+					</div>
 				</div>
 			</section>
 
@@ -128,7 +130,7 @@ export default function Home() {
 				<div className='grid gap-5 md:grid-cols-3'>
 					{capabilities.map((capability, index) => {
 						const Icon = capability.icon;
-						const isWide = index === 0 || index === 3;
+						const isWide = index === 0 || index === 3 || index === 4;
 
 						return (
 							<Card className={`border border-border bg-surface p-8 ${isWide ? "md:col-span-2 md:min-h-56" : "md:min-h-56"}`} key={capability.title}>
@@ -136,7 +138,7 @@ export default function Home() {
 
 								<Card.Header className={isWide ? "relative z-10 max-w-xl p-0 md:pt-8" : "relative z-10 p-0"}>
 									<Card.Title className='text-xl font-black'>{capability.title}</Card.Title>
-									<Card.Description className='mt-3 max-w-xl text-sm leading-6 text-muted'>{capability.description}</Card.Description>
+									<Card.Description className={`mt-3 text-sm leading-6 text-muted ${isWide ? "max-w-xl" : ""}`}>{capability.description}</Card.Description>
 								</Card.Header>
 							</Card>
 						);
