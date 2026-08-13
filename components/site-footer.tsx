@@ -38,10 +38,12 @@ const footerColumns: FooterColumn[] = [
 	{
 		title: "Services",
 		links: [
-			{ href: "/work", label: "Case Studies" },
-			{ href: "/work", label: "Selected Projects" },
-			{ href: "/contact", label: "Product Architecture" },
-			{ href: "/contact", label: "Advisory Sessions" },
+			{ href: "/contact", label: "Technical Advisory" },
+			{ href: "/contact", label: "System Architecture" },
+			{ href: "/contact", label: "Custom Product Build" },
+			{ href: "/contact", label: "Workflow Automation" },
+			{ href: "/contact", label: "Performance Optimization" },
+			{ href: "/contact", label: "Technical SEO & Growth" },
 		],
 	},
 	{

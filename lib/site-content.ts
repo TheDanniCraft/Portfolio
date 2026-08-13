@@ -1,4 +1,4 @@
-import { AbbrApi, Compass, Speedometer, TargetDart } from "@gravity-ui/icons";
+import { Compass, Speedometer, Rocket, Server, Thunderbolt, TargetDart } from "@gravity-ui/icons";
 import type { IconType } from "@icons-pack/react-simple-icons";
 import {
 	SiTypescript,
@@ -93,7 +93,7 @@ export const profile = {
 	focus: "Architecture",
 	headline: "I build resilient digital structures.",
 	subtitle: "Building digital empires with technical precision, creative problem-solving, and systems that stay fast, coherent, and maintainable as they grow.",
-	portrait: "https://placehold.co/900x1125?text=Portrait",
+	portrait: "/portrait.webp",
 };
 
 export const shippedProjectsStat = {
@@ -213,9 +213,24 @@ export const projects = [
 
 export const capabilities = [
 	{
-		title: "Architecture Design",
-		description: "I design systems that stay maintainable, scalable, and robust after launch.",
+		title: "Technical Advisory",
+		description: "Strategic guidance, code audits, and fractional CTO support for scaling teams.",
 		icon: Compass,
+	},
+	{
+		title: "System Architecture",
+		description: "Designing backend infrastructures that stay maintainable, fast, and robust.",
+		icon: Server,
+	},
+	{
+		title: "Custom Product Build",
+		description: "End-to-end development of resilient MVPs and digital products built for scale.",
+		icon: Rocket,
+	},
+	{
+		title: "Workflow Automation",
+		description: "Connecting APIs and building n8n pipelines to automate manual processes.",
+		icon: Thunderbolt,
 	},
 	{
 		title: "Performance Optimization",
@@ -223,13 +238,8 @@ export const capabilities = [
 		icon: Speedometer,
 	},
 	{
-		title: "API Integration",
-		description: "Seamless connections between services, products, and third-party platforms.",
-		icon: AbbrApi,
-	},
-	{
-		title: "Conversion Engineering",
-		description: "Data-driven UX patterns that guide users through critical workflows.",
+		title: "Technical SEO & Growth",
+		description: "Post-launch strategies ensuring sites rank, perform, and convert efficiently.",
 		icon: TargetDart,
 	},
 ];
