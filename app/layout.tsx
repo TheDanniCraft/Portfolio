@@ -27,7 +27,7 @@ export default function RootLayout({
 	return (
 		<html lang='en' className={`${inter.variable} h-full antialiased`} suppressHydrationWarning>
 			<head />
-			<body className='flex min-h-full flex-col bg-background text-foreground' suppressHydrationWarning>
+			<body className='flex min-h-full flex-col overflow-x-hidden bg-background text-foreground' suppressHydrationWarning>
 				<PlausibleProvider enabled>
 					<ThemeProvider attribute='class'>
 						<SiteNavbar />
