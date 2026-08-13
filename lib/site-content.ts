@@ -84,7 +84,6 @@ import {
 	SiN8nHex,
 } from "@icons-pack/react-simple-icons";
 
-export type ProjectCategory = "web-apps" | "ui-ux" | "open-source";
 export type AvailabilityState = "available" | "limited" | "booked";
 
 export const profile = {
@@ -174,41 +173,6 @@ export const socialLinks = [
 	{ label: "GitHub", href: "https://github.com/TheDanniCraft/" },
 	{ label: "LinkedIn", href: "https://www.linkedin.com/in/thedannicraft/" },
 	{ label: "Blog", href: "https://blog.thedannicraft.de/" },
-];
-
-export const projects = [
-	{
-		title: "GamerForge System",
-		description: "A Discord bot system built with discord.js for community tools, server workflows, and ongoing feature updates.",
-		tags: ["Discord.js", "Node.js", "Community"],
-		category: "open-source" as ProjectCategory,
-		image: "https://placehold.co/1200x760?text=GamerForge+System",
-		featured: true,
-	},
-	{
-		title: "Clipify",
-		description: "A creator tool focused on making stream clipping faster, cleaner, and easier to share.",
-		tags: ["Streaming", "Web App", "Tools"],
-		category: "web-apps" as ProjectCategory,
-		image: "https://placehold.co/1200x760?text=Clipify",
-		featured: true,
-	},
-	{
-		title: "Nexus UI",
-		description: "A component library focused on accessibility, predictable states, and sharp interaction patterns.",
-		tags: ["React", "Design System"],
-		category: "ui-ux" as ProjectCategory,
-		image: "https://placehold.co/760x640?text=Nexus+UI",
-		featured: false,
-	},
-	{
-		title: "Prism API",
-		description: "A service layer for routing product data between dashboards, automations, and public interfaces.",
-		tags: ["Node.js", "API"],
-		category: "web-apps" as ProjectCategory,
-		image: "https://placehold.co/1200x640?text=Prism+API",
-		featured: true,
-	},
 ];
 
 export const capabilities = [

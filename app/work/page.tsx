@@ -1,9 +1,10 @@
 "use client";
 
-import { Globe, Rocket, ShoppingBag, SquareArticle } from "@gravity-ui/icons";
+import { Comment, Globe, Flask, ShoppingBag, SquareArticle } from "@gravity-ui/icons";
 import { buttonVariants, Card, Chip, Link, Tag, TagGroup } from "@heroui/react";
 import { useMemo, useState } from "react";
-import { projects, type ProjectCategory } from "@/lib/site-content";
+import { projects, type ProjectCategory } from "@/lib/projects";
+import { ProjectImage } from "@/components/project-image";
 
 type FilterId = "all" | ProjectCategory;
 
@@ -45,13 +46,17 @@ export default function WorkPage() {
 								<Globe className='size-4' />
 								Web Apps
 							</Tag>
-							<Tag id='ui-ux'>
-								<Rocket className='size-4' />
-								UI/UX
+							<Tag id='experiments'>
+								<Flask className='size-4' />
+								Experiments
 							</Tag>
 							<Tag id='open-source'>
 								<ShoppingBag className='size-4' />
 								Open Source
+							</Tag>
+							<Tag id='discord'>
+								<Comment className='size-4' />
+								Discord
 							</Tag>
 						</TagGroup.List>
 					</TagGroup>
@@ -60,14 +65,19 @@ export default function WorkPage() {
 
 			<section className='mx-auto grid w-full max-w-6xl gap-6 px-6 pb-20 md:grid-cols-12'>
 				{filteredProjects.map((project, index) => {
-					const spanClass = index === 0 ? "md:col-span-8" : index === 1 ? "md:col-span-4" : index === 2 ? "md:col-span-4" : "md:col-span-8";
-					const aspectClass = index === 0 ? "aspect-[16/10]" : index === 1 ? "aspect-[1/1]" : index === 2 ? "aspect-[4/3]" : "aspect-[16/9]";
+					const patternIndex = index % 4;
+					const isWide = patternIndex === 0 || patternIndex === 3;
+					const spanClass = isWide ? "md:col-span-8" : "md:col-span-4";
+					const aspectClass = patternIndex === 0 ? "aspect-[16/10]" : patternIndex === 1 ? "aspect-square" : patternIndex === 2 ? "aspect-[4/3]" : "aspect-[16/9]";
 
 					return (
 						<Card className={`overflow-hidden border border-border bg-surface p-0 ${spanClass}`} key={project.title}>
-							<div aria-label={`${project.title} project image`} className={`${aspectClass} bg-cover bg-center`} style={{ backgroundImage: `url('${project.image}')` }} />
+							<ProjectImage alt={project.imageAlt} className={aspectClass} position={project.imagePosition} sizes={isWide ? "(min-width: 768px) 66vw, 100vw" : "(min-width: 768px) 34vw, 100vw"} src={project.image} />
 							<Card.Content className='grid gap-4 p-6'>
-								<div className='flex gap-2'>
+								<div className='flex flex-wrap gap-2'>
+									<Chip className='h-6 px-2 flex items-center text-[0.6rem] font-black uppercase tracking-[0.12em]' color='accent'>
+										{project.status}
+									</Chip>
 									{project.tags.map((tag) => (
 										<Chip className='h-6 px-2 flex items-center text-[0.6rem] font-black uppercase tracking-[0.12em]' key={tag}>
 											{tag}
@@ -75,7 +85,12 @@ export default function WorkPage() {
 									))}
 								</div>
 								<h2 className='text-3xl font-black sm:text-4xl'>{project.title}</h2>
+								<p className='text-xs font-bold uppercase tracking-[0.16em] text-accent'>{project.context} · {project.year}</p>
 								<p className='text-base leading-7 text-muted sm:text-lg sm:leading-8'>{project.description}</p>
+								<div className='flex flex-wrap gap-4 pt-2'>
+									{project.caseStudy ? <Link className='text-sm font-bold text-accent hover:underline' href={`/work/${project.slug}`}>View case study</Link> : null}
+									{project.links.map((link) => <Link className='text-sm font-bold text-foreground hover:text-accent' href={link.href} key={link.href}>{link.label}</Link>)}
+								</div>
 							</Card.Content>
 						</Card>
 					);
