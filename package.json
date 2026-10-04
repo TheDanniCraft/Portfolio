@@ -8,8 +8,8 @@
 	},
 	"scripts": {
 		"dev": "infisical run --env=dev --watch -- next dev",
-		"build": "next build",
-		"start": "next start",
+		"build": "bun scripts/build.mjs",
+		"start": "bun scripts/start.mjs",
 		"lint": "eslint .",
 		"typecheck": "tsc --noEmit",
 		"postinstall": "bun scripts/copy-pdf-worker.mjs"
