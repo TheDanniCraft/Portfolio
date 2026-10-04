@@ -95,16 +95,11 @@ export const profile = {
 	portrait: "/portrait.webp",
 };
 
-export const shippedProjectsStat = {
-	value: "120+",
-	label: "Projects Shipped",
-};
-
 export const availability = {
 	state: "available" as AvailabilityState,
 	label: "Available",
 	shortLabel: "Available",
-	responseTime: "Response time under 12 hours",
+	responseTime: "Open for project inquiries",
 };
 
 export const tools: Array<{ name: string; detail: string; icon: IconType; color: string }> = [
@@ -205,45 +200,6 @@ export const capabilities = [
 		title: "Technical SEO & Growth",
 		description: "Post-launch strategies ensuring sites rank, perform, and convert efficiently.",
 		icon: TargetDart,
-	},
-];
-
-export const testimonials = [
-	{
-		quote: "Communication was straightforward and the project moved quickly. The final result fit what we needed without a lot of back and forth.",
-		name: "M. Chen",
-		role: "CEO, Quantum Dynamics",
-		featured: true,
-	},
-	{
-		quote: "Strong technical work and a good sense for design decisions. Things were explained clearly, which made handover easier for us.",
-		name: "S. Jenkins",
-		role: "Founder, Pixel Media",
-		featured: true,
-	},
-	{
-		quote: "The new platform is noticeably faster and easier to manage. We saw improvements pretty soon after launch.",
-		name: "D. Miller",
-		role: "Operations Lead, Fintech Network",
-		featured: true,
-	},
-	{
-		quote: "Typography, performance, and interaction quality were implemented with precision. Our brand finally feels premium.",
-		name: "Julian Vane",
-		role: "Creative Director, Obsidian Pulse",
-		featured: false,
-	},
-	{
-		quote: "Deep technical knowledge met sharp product taste. Our SaaS now feels like a polished product.",
-		name: "Elena Rodriguez",
-		role: "Founder, Aero-V Systems",
-		featured: false,
-	},
-	{
-		quote: "They translated abstract goals into concrete solutions and our engagement metrics climbed fast.",
-		name: "David Chen",
-		role: "Marketing Director, Flux Media",
-		featured: false,
 	},
 ];
 

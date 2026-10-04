@@ -1,7 +1,7 @@
 import { buttonVariants, Card, Link } from "@heroui/react";
 import { AvailabilityIndicator } from "@/components/availability-indicator";
 import { CvModalButton } from "@/components/cv-modal-button";
-import { capabilities, profile, shippedProjectsStat, testimonials, tools } from "@/lib/site-content";
+import { capabilities, profile, tools } from "@/lib/site-content";
 import { projects } from "@/lib/projects";
 import { ProjectInquiryForm } from "@/components/project-inquiry-form";
 import { Marquee } from "@/components/marquee";
@@ -9,8 +9,6 @@ import { ProjectImage } from "@/components/project-image";
 
 export default function Home() {
 	const featuredProjects = projects.filter((project) => project.featured);
-	const featuredTestimonials = testimonials.filter((testimonial) => testimonial.featured);
-
 	const toolRows = [tools.filter((_, index) => index % 3 === 0), tools.filter((_, index) => index % 3 === 1), tools.filter((_, index) => index % 3 === 2)];
 	return (
 		<div className='min-h-screen bg-background text-foreground'>
@@ -42,13 +40,13 @@ export default function Home() {
 				<div className='relative mt-12 w-full md:mt-0'>
 					<div className='relative ml-auto w-[75%] sm:w-[60%] md:w-[88%]'>
 						<Card className='aspect-[4/5] w-full overflow-hidden border border-border bg-surface p-0'>
-							<div aria-label='Portrait placeholder' className='h-full w-full bg-cover bg-center' style={{ backgroundImage: `url('${profile.portrait}')` }} />
+							<div aria-label='Portrait of Daniel Trui' className='h-full w-full bg-cover bg-center' role='img' style={{ backgroundImage: `url('${profile.portrait}')` }} />
 						</Card>
 
 						<Card className='absolute -bottom-6 -left-8 w-48 border border-border bg-surface p-5 shadow-2xl shadow-black/30 sm:-bottom-10 sm:-left-24 sm:w-52 md:-bottom-12 md:-left-16 md:w-56 lg:-left-24'>
 							<Card.Content className='grid gap-2 p-0'>
-								<p className='text-3xl font-black leading-none text-accent sm:text-4xl'>{shippedProjectsStat.value}</p>
-								<p className='text-[0.65rem] font-semibold uppercase tracking-[0.24em] text-muted'>{shippedProjectsStat.label}</p>
+								<p className='text-3xl font-black leading-none text-accent sm:text-4xl'>{projects.length}</p>
+								<p className='text-[0.65rem] font-semibold uppercase tracking-[0.24em] text-muted'>Selected Projects</p>
 							</Card.Content>
 						</Card>
 					</div>
@@ -100,7 +98,7 @@ export default function Home() {
 
 						return (
 							<Card className={`overflow-hidden border border-border bg-surface p-0 ${isLastOddItem ? "md:col-span-2" : ""}`} key={project.title} role='article'>
-							<ProjectImage alt={project.imageAlt} className='aspect-video' position={project.imagePosition} sizes='(min-width: 768px) 50vw, 100vw' src={project.image} />
+							<ProjectImage alt={project.imageAlt} className='aspect-[4/3]' position={project.imagePosition} sizes='(min-width: 768px) 50vw, 100vw' src={project.image} variant='thumbnail' />
 
 								<Card.Content className='grid gap-4 p-6'>
 									<div className='flex flex-wrap gap-2'>
@@ -145,37 +143,6 @@ export default function Home() {
 							</Card>
 						);
 					})}
-				</div>
-			</section>
-
-			<section id='testimonials' className='scroll-mt-24 py-20'>
-				<div className='mx-auto w-full max-w-6xl px-6'>
-					<h2 className='mb-10 text-4xl font-black tracking-normal sm:text-5xl'>Voices of Impact</h2>
-
-					<div className='grid gap-6 md:grid-cols-3'>
-						{featuredTestimonials.map((testimonial) => (
-							<Card key={testimonial.name} className='border border-border bg-surface p-7' role='article'>
-								<Card.Content className='p-0'>
-									<p className='text-3xl font-black leading-none text-accent'>&ldquo;</p>
-									<p className='mt-4 text-sm italic leading-6 text-foreground'>{testimonial.quote}</p>
-								</Card.Content>
-
-								<Card.Footer className='mt-7 flex items-center gap-3 p-0'>
-									<div className='grid size-10 place-items-center rounded-full bg-accent text-sm font-black text-accent-foreground'>
-										{testimonial.name
-											.split(" ")
-											.map((part) => part[0])
-											.join("")}
-									</div>
-
-									<div>
-										<p className='text-sm font-bold'>{testimonial.name}</p>
-										<p className='text-xs text-muted'>{testimonial.role}</p>
-									</div>
-								</Card.Footer>
-							</Card>
-						))}
-					</div>
 				</div>
 			</section>
 

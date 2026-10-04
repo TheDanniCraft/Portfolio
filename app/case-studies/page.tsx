@@ -6,7 +6,7 @@ import { ProjectImage } from "@/components/project-image";
 import { caseStudyProjects } from "@/lib/projects";
 
 export const metadata: Metadata = {
-	title: "Case Studies · TheDanniCraft",
+	title: "Case Studies",
 	description: "Detailed product and engineering case studies from TheDanniCraft.",
 };
 
@@ -21,8 +21,8 @@ export default function CaseStudiesPage() {
 
 			<section className='mx-auto grid w-full max-w-6xl gap-8 px-6 pb-24'>
 				{caseStudyProjects.map((project, index) => (
-					<Card className='grid overflow-hidden border border-border bg-surface p-0 md:grid-cols-2' key={project.slug}>
-						<ProjectImage alt={project.imageAlt} className='aspect-[16/10] md:aspect-auto md:min-h-[28rem]' position={project.imagePosition} sizes='(min-width: 768px) 50vw, 100vw' src={project.image} />
+					<Card className='grid items-center overflow-hidden border border-border bg-surface p-0 md:grid-cols-2' key={project.slug}>
+						<ProjectImage alt={project.imageAlt} className='aspect-[4/3] w-full' position={project.imagePosition} priority={index === 0} sizes='(min-width: 768px) 50vw, 100vw' src={project.image} variant='thumbnail' />
 						<div className={`flex flex-col justify-center p-8 sm:p-12 ${index % 2 === 1 ? "md:-order-1" : ""}`}>
 							<p className='text-xs font-bold uppercase tracking-[0.2em] text-accent'>{project.caseStudy?.eyebrow}</p>
 							<h2 className='mt-4 text-4xl font-black sm:text-5xl'>{project.title}</h2>

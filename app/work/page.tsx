@@ -67,12 +67,10 @@ export default function WorkPage() {
 				{filteredProjects.map((project, index) => {
 					const patternIndex = index % 4;
 					const isWide = patternIndex === 0 || patternIndex === 3;
-					const spanClass = isWide ? "md:col-span-8" : "md:col-span-4";
-					const aspectClass = patternIndex === 0 ? "aspect-[16/10]" : patternIndex === 1 ? "aspect-square" : patternIndex === 2 ? "aspect-[4/3]" : "aspect-[16/9]";
 
 					return (
-						<Card className={`overflow-hidden border border-border bg-surface p-0 ${spanClass}`} key={project.title}>
-							<ProjectImage alt={project.imageAlt} className={aspectClass} position={project.imagePosition} sizes={isWide ? "(min-width: 768px) 66vw, 100vw" : "(min-width: 768px) 34vw, 100vw"} src={project.image} />
+						<Card className={`overflow-hidden border border-border bg-surface p-0 ${isWide ? "md:col-span-8" : "md:col-span-4"}`} key={project.title}>
+							<ProjectImage alt={project.imageAlt} className='aspect-[4/3]' position={project.imagePosition} priority={index < 2} sizes={isWide ? "(min-width: 768px) 66vw, 100vw" : "(min-width: 768px) 34vw, 100vw"} src={project.image} variant='thumbnail' />
 							<Card.Content className='grid gap-4 p-6'>
 								<div className='flex flex-wrap gap-2'>
 									<Chip className='h-6 px-2 flex items-center text-[0.6rem] font-black uppercase tracking-[0.12em]' color='accent'>
@@ -108,8 +106,8 @@ export default function WorkPage() {
 							Start Project
 						</Link>
 
-						<Link className={`${buttonVariants({ variant: "outline", size: "lg" })}`} href='/testimonials'>
-							View Reviews
+						<Link className={`${buttonVariants({ variant: "outline", size: "lg" })}`} href='/case-studies'>
+							View Case Studies
 						</Link>
 					</div>
 				</Card>
