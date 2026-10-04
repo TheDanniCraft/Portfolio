@@ -6,22 +6,54 @@
   "minimumReleaseAge": "7 days",
   "minimumReleaseAgeBehaviour": "timestamp-required",
   "internalChecksFilter": "strict",
+  "internalChecksAsSuccess": true,
+  "prCreation": "not-pending",
   "dependencyDashboard": true,
   "timezone": "Europe/Berlin",
   "schedule": ["* 0-3 * * *"],
   "updateNotScheduled": false,
+  "prHourlyLimit": 1,
   "branchPrefix": "renovate/",
+  "additionalBranchPrefix": "{{{manager}}}/",
   "labels": ["dependencies", "renovate"],
   "semanticCommits": "disabled",
   "commitMessagePrefix": "⬆️ Bump ",
   "commitMessageAction": "",
   "commitMessageTopic": "{{depName}}",
   "commitMessageExtra": " to {{newVersion}}",
-  "groupName": "all dependency updates",
-  "groupSlug": "all-dependencies",
-  "separateMajorMinor": false,
-  "separateMinorPatch": false,
-  "separateMultipleMajor": false,
+  "packageRules": [
+    {
+      "groupName": "next/react ecosystem",
+      "matchPackageNames": ["/^next$/", "/^react$/", "/^react-dom$/", "/^eslint-config-next$/", "/^next-/"]
+    },
+    {
+      "groupName": "typescript & types",
+      "matchPackageNames": ["/^@types//", "/^typescript$/"]
+    },
+    {
+      "groupName": "linting",
+      "matchPackageNames": ["/^eslint$/"]
+    },
+    {
+      "groupName": "tailwind",
+      "matchPackageNames": ["/^tailwindcss$/", "/^@tailwindcss//"]
+    },
+    {
+      "matchManagers": ["github-actions"],
+      "groupName": "github actions"
+    },
+    {
+      "description": "Group routine updates into one daily pull request",
+      "matchUpdateTypes": ["minor", "patch"],
+      "groupName": "daily non-major dependency updates",
+      "groupSlug": "daily-non-major"
+    },
+    {
+      "description": "Keep c15t frontend and backend in sync",
+      "matchPackageNames": ["c15t", "/^@c15t//"],
+      "groupName": "c15t consent stack"
+    }
+  ],
   "vulnerabilityAlerts": {
     "groupName": null,
     "minimumReleaseAge": null,
