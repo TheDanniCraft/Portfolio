@@ -27,6 +27,12 @@ GitHub Actions runs the verification commands above for pull requests and pushes
 
 HeroUI Pro authenticates while dependencies are installed. Add the licensed token as the `HEROUI_AUTH_TOKEN` GitHub Actions repository secret; the workflow exposes it only to the install step.
 
+## Social previews and search metadata
+
+`lib/metadata.ts` defines the production URL and shared Open Graph/Twitter image. Each page supplies its own title, description, and canonical path through `pageMetadata`. The work filter lives in a client component so its page can export server metadata.
+
+The 1200 × 630 banner is exported from the Penpot `Portfolio` file, on the `Social Preview` page (board `OG / TheDanniCraft / Start a project 01`, ID `76b2c126-1d02-804d-8008-bd91fffc4c22`). Its deployed asset is `public/og/portfolio-v4.png`. When replacing the artwork, export a PNG at 1× and use a new versioned filename in the metadata helper to avoid stale image caches. Discord may retain an existing link preview after deployment; verify with a newly shared URL. Canonical URLs continue to point to the clean production paths.
+
 ## Privacy preferences
 
 c15t currently runs in offline mode with a six-month consent lifetime. Privacy choices are stored only in the visitor's browser; no consent backend or audit history is created. Always-active first-party services remain available, while the third-party Morgen booking iframe is gated behind the optional `functionality` category.

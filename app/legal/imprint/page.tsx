@@ -1,11 +1,7 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import { LegalPage } from "@/components/legal-page";
 
-export const metadata: Metadata = {
-	title: "Imprint",
-	description: "Provider and contact information for TheDanniCraft.",
-	alternates: { canonical: "/legal/imprint" },
-};
+export const metadata = pageMetadata("/legal/imprint", "Imprint", "Provider and contact information for TheDanniCraft.");
 
 export default function ImprintPage() {
 	return (

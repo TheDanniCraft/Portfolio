@@ -1,14 +1,11 @@
 import { ArrowUpRightFromSquare } from "@gravity-ui/icons";
 import { Card } from "@heroui/react";
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import Link from "next/link";
 import { ProjectImage } from "@/components/project-image";
 import { caseStudyProjects } from "@/lib/projects";
 
-export const metadata: Metadata = {
-	title: "Case Studies",
-	description: "Detailed product and engineering case studies from TheDanniCraft.",
-};
+export const metadata = pageMetadata("/case-studies", "Case Studies", "Detailed product and engineering case studies from TheDanniCraft.");
 
 export default function CaseStudiesPage() {
 	return (

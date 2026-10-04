@@ -1,8 +1,11 @@
+import { pageMetadata } from "@/lib/metadata";
 import { ProjectInquiryForm } from "@/components/project-inquiry-form";
 import { getAvailabilityStyles } from "@/components/availability-indicator";
 import { availability } from "@/lib/site-content";
 import { ArrowUpRightFromSquare, MapPin } from "@gravity-ui/icons";
 import { Card, Link } from "@heroui/react";
+
+export const metadata = pageMetadata("/contact", "Contact", "Discuss product engineering, system architecture, or automation projects with TheDanniCraft. Share your goals and start a conversation.");
 
 type ContactTile = {
 	title: string;

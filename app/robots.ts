@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { siteUrl } from "@/lib/metadata";
 
 export default function robots(): MetadataRoute.Robots {
 	return {
@@ -6,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
 			userAgent: "*",
 			allow: "/",
 		},
-		sitemap: "https://thedannicraft.de/sitemap.xml",
+		sitemap: `${siteUrl}/sitemap.xml`,
 	};
 }
