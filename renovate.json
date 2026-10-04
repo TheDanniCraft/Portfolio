@@ -1,72 +1,30 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "config:recommended"
-  ],
+  "extends": ["config:recommended"],
+  "enabledManagers": ["bun", "github-actions"],
   "rangeStrategy": "bump",
+  "minimumReleaseAge": "7 days",
+  "minimumReleaseAgeBehaviour": "timestamp-required",
+  "internalChecksFilter": "strict",
+  "dependencyDashboard": true,
+  "timezone": "Europe/Berlin",
+  "schedule": ["* 0-3 * * *"],
+  "updateNotScheduled": false,
   "branchPrefix": "renovate/",
-  "additionalBranchPrefix": "{{{manager}}}/",
   "labels": ["dependencies", "renovate"],
-  "commitMessagePrefix": "⬆️ Bump ",
-  "commitMessageAction": "",
-  "commitMessageTopic": "{{depName}}",
-  "commitMessageExtra": " to {{newVersion}}",
-  "packageRules": [
-    {
-      "matchPackagePatterns": ["^next$", "^react$", "^react-dom$", "^eslint-config-next$", "^next-"],
-      "groupName": "next/react ecosystem"
-    },
-    {
-      "matchPackagePatterns": ["^@mantine/"],
-      "groupName": "mantine monorepo"
-    },
-    {
-      "matchPackagePatterns": ["^@tiptap/"],
-      "groupName": "tiptap editor"
-    },
-    {
-      "matchPackagePatterns": ["^embla-carousel-", "^@mantine/carousel$"],
-      "groupName": "carousel (embla/mantine)"
-    },
-    {
-      "matchPackagePatterns": ["^tailwindcss$", "^postcss", "^postcss-", "^autoprefixer$"],
-      "groupName": "css tooling"
-    },
-    {
-      "matchPackagePatterns": ["^@tabler/icons-react$"],
-      "groupName": "tabler icons"
-    },
-    {
-      "matchPackagePatterns": ["^@calcom/embed-react$"],
-      "groupName": "cal.com embed"
-    },
-    {
-      "matchPackagePatterns": ["^next-plausible$"],
-      "groupName": "analytics (plausible)"
-    },
-    {
-      "matchPackagePatterns": ["^pocketbase$"],
-      "groupName": "pocketbase"
-    },
-    {
-      "matchPackagePatterns": ["^sharp$"],
-      "groupName": "image processing (sharp)"
-    },
-    {
-      "matchPackagePatterns": ["^axios$"],
-      "groupName": "http client"
-    },
-    {
-      "matchPackagePatterns": ["^dayjs$"],
-      "groupName": "dates (dayjs)"
-    },
-    {
-      "matchPackagePatterns": ["^eslint$"],
-      "groupName": "eslint"
-    },
-    {
-      "matchManagers": ["github-actions"],
-      "groupName": "github actions"
-    }
-  ]
+  "semanticCommits": "enabled",
+  "semanticCommitType": "chore",
+  "semanticCommitScope": "deps",
+  "groupName": "all dependency updates",
+  "groupSlug": "all-dependencies",
+  "separateMajorMinor": false,
+  "separateMinorPatch": false,
+  "separateMultipleMajor": false,
+  "vulnerabilityAlerts": {
+    "groupName": null,
+    "minimumReleaseAge": null,
+    "schedule": [],
+    "prCreation": "immediate",
+    "labels": ["dependencies", "renovate", "security"]
+  }
 }
