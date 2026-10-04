@@ -5,7 +5,7 @@ export const siteTitle = "TheDanniCraft · Product Engineering & Systems";
 export const siteDescription = "Independent product engineering, system architecture, automation, and open-source work by TheDanniCraft.";
 
 const socialImage = {
-	url: "/og/portfolio-v4.png",
+	url: "/og-image.png",
 	width: 1200,
 	height: 630,
 	type: "image/png",
