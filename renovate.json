@@ -1,0 +1,30 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:recommended"],
+  "enabledManagers": ["bun", "github-actions"],
+  "rangeStrategy": "bump",
+  "minimumReleaseAge": "7 days",
+  "minimumReleaseAgeBehaviour": "timestamp-required",
+  "internalChecksFilter": "strict",
+  "dependencyDashboard": true,
+  "timezone": "Europe/Berlin",
+  "schedule": ["* 0-3 * * *"],
+  "updateNotScheduled": false,
+  "branchPrefix": "renovate/",
+  "labels": ["dependencies", "renovate"],
+  "semanticCommits": "enabled",
+  "semanticCommitType": "chore",
+  "semanticCommitScope": "deps",
+  "groupName": "all dependency updates",
+  "groupSlug": "all-dependencies",
+  "separateMajorMinor": false,
+  "separateMinorPatch": false,
+  "separateMultipleMajor": false,
+  "vulnerabilityAlerts": {
+    "groupName": null,
+    "minimumReleaseAge": null,
+    "schedule": [],
+    "prCreation": "immediate",
+    "labels": ["dependencies", "renovate", "security"]
+  }
+}
