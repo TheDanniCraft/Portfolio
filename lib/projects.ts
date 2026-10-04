@@ -123,6 +123,7 @@ export const projects: Project[] = [
 				"Local session state tracks performance across matches without requiring a cloud account.",
 				"Optional FACEIT and Leetify clients add supported ratings and performance metrics in the Pro edition.",
 				"Compatible game artwork is resolved from the local CS2 installation and rendered at runtime rather than redistributed.",
+				"Stream Deck actions turn focused state slices into responsive key layouts with configurable labels, colors, precision, and time periods.",
 			],
 			decisions: [
 				{ title: "Design for a glance, not a dashboard", detail: "Each key prioritizes one piece of match state with configurable labels, color, precision, and time period instead of compressing a full statistics screen into a tiny tile." },
@@ -220,6 +221,7 @@ export const projects: Project[] = [
 				"Asynchronous workers deliver to HTTP targets with retry and replay support.",
 				"Outbound runners are planned to reach private applications without exposing them directly to providers.",
 				"The committed Supabase workspace currently contains the backend configuration, migrations, Edge Functions, queue, and scheduled-work foundation.",
+				"Operational views expose delivery state, retry history, replay controls, and incident context from the durable record.",
 			],
 			decisions: [
 				{ title: "Persist before acknowledging", detail: "Provider success means Payload Bay has accepted durable responsibility for the event, not that a downstream application happened to be online at that moment." },
