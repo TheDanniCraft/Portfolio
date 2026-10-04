@@ -25,6 +25,8 @@ Renovate batches routine Bun and GitHub Actions updates into one pull request af
 
 GitHub Actions runs the verification commands above for pull requests and pushes to `master` using the committed lockfile. It can also be started manually.
 
+HeroUI Pro authenticates while dependencies are installed. Add the licensed token as the `HEROUI_AUTH_TOKEN` GitHub Actions repository secret; the workflow exposes it only to the install step.
+
 ## Privacy preferences
 
 c15t currently runs in offline mode with a six-month consent lifetime. Privacy choices are stored only in the visitor's browser; no consent backend or audit history is created. Always-active first-party services remain available, while the third-party Morgen booking iframe is gated behind the optional `functionality` category.
@@ -51,6 +53,7 @@ Sync or inject these values from Infisical into the Coolify application environm
 
 ```dotenv
 NODE_ENV=production
+HEROUI_AUTH_TOKEN=...
 INQUIRY_DELIVERY_MODE=chatwoot
 CHATWOOT_BASE_URL=https://chat.example.com
 CHATWOOT_ACCOUNT_ID=1
@@ -60,7 +63,7 @@ CAP_VERIFY_URL=https://challenge.cloud.thedannicraft.de/03d619b86e/siteverify
 CAP_SECRET=...
 ```
 
-`NEXT_PUBLIC_PLAUSIBLE_SCRIPT_NAME` is optional and must be marked as available at build time if configured because Next.js embeds public variables into the client bundle. The Chatwoot token and other server-only values must remain runtime secrets and must never use the `NEXT_PUBLIC_` prefix.
+`HEROUI_AUTH_TOKEN` is required at build time so the licensed HeroUI Pro package can finish installation. It is not a public application variable and must never use the `NEXT_PUBLIC_` prefix. `NEXT_PUBLIC_PLAUSIBLE_SCRIPT_NAME` is optional and must also be marked as available at build time if configured because Next.js embeds public variables into the client bundle. The Chatwoot token and other server-only values must remain runtime secrets and must never use the `NEXT_PUBLIC_` prefix.
 
 `CAP_SECRET` is the secret belonging to the configured Cap site key, not the Cap dashboard administrator key.
 
