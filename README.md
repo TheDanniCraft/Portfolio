@@ -31,6 +31,8 @@ HeroUI Pro authenticates while dependencies are installed. Add the licensed toke
 
 `lib/metadata.ts` defines the production URL and shared Open Graph/Twitter image. Each page supplies its own title, description, and canonical path through `pageMetadata`. The work filter lives in a client component so its page can export server metadata.
 
+Next.js generates `/sitemap.xml` through `app/sitemap.ts` and `/robots.txt` through `app/robots.ts`. The sitemap includes public pages and case studies, excluding the `/about` redirect. `/llms.txt` is a cached text route generated from the same project catalog for AI tools that support the convention; it is not a Google ranking signal.
+
 The 1200 × 630 banner is exported from the Penpot `Portfolio` file, on the `Social Preview` page (board `OG / TheDanniCraft / Start a project 01`, ID `76b2c126-1d02-804d-8008-bd91fffc4c22`). Its deployed asset is `public/og/portfolio-v4.png`. When replacing the artwork, export a PNG at 1× and use a new versioned filename in the metadata helper to avoid stale image caches. Discord may retain an existing link preview after deployment; verify with a newly shared URL. Canonical URLs continue to point to the clean production paths.
 
 ## Privacy preferences
