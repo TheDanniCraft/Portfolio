@@ -3,6 +3,7 @@
 import { ArrowUpRightFromSquare } from "@gravity-ui/icons";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { CookiePreferencesButton } from "@/components/consent-manager";
 import { socialLinks } from "@/lib/site-content";
 
 type ServiceStatus = "DOWN" | "UP" | "PARTIAL" | "MAINTENANCE" | "UNKNOWN";
@@ -32,7 +33,6 @@ const footerColumns: FooterColumn[] = [
 		links: [
 			{ href: "/work", label: "Work" },
 			{ href: "/case-studies", label: "Case Studies" },
-			{ href: "/testimonials", label: "Testimonials" },
 			{ href: "/contact", label: "Contact" },
 		],
 	},
@@ -50,10 +50,10 @@ const footerColumns: FooterColumn[] = [
 	{
 		title: "Legal",
 		links: [
-			{ href: "/contact", label: "Imprint" },
-			{ href: "/contact", label: "Privacy Policy" },
-			{ href: "/contact", label: "Cookie Policy" },
-			{ href: "/contact", label: "Terms of Service" },
+			{ href: "/legal/imprint", label: "Imprint" },
+			{ href: "/legal/privacy", label: "Privacy Policy" },
+			{ href: "/legal/cookies", label: "Storage & Cookies" },
+			{ href: "/legal/privacy-requests", label: "Privacy Requests" },
 		],
 	},
 ];
@@ -140,7 +140,10 @@ export function SiteFooter() {
 
 				<div className='flex flex-wrap items-center justify-between gap-3 border-t border-border pt-5'>
 					<p className='text-xs text-muted'>&copy; {new Date().getFullYear()} TheDanniCraft</p>
-					<p className='text-xs text-muted'>Crafted with precision.</p>
+					<div className='flex items-center gap-4 text-xs text-muted'>
+						<CookiePreferencesButton className='hover:text-accent' />
+						<p>Crafted with precision.</p>
+					</div>
 				</div>
 			</div>
 		</footer>

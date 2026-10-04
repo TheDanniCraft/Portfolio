@@ -1,29 +1,29 @@
 "use server";
 
+import { createHash } from "node:crypto";
 import { z } from "zod";
+import { createInquiryConversation } from "@/lib/server/inquiry-chatwoot";
 
 type SubmitInquiryResult = {
 	success: boolean;
 	message?: string;
 };
 
-type N8nResponse = {
-	message?: string;
-	success?: boolean | string;
-};
-
 const inquirySchema = z.object({
-	name: z.string().min(1, "Please provide your name."),
-	email: z.string().email("Please provide a valid email address."),
-	subject: z.string().optional(),
-	message: z.string().min(10, "Your message must be at least 10 characters long."),
+	name: z.string().trim().min(1, "Please provide your name.").max(120, "Please shorten your name."),
+	email: z.string().trim().email("Please provide a valid email address.").max(254),
+	subject: z.enum(["general-inquiry", "new-product-build", "redesign-optimization", "technical-advisory"]).default("general-inquiry"),
+	message: z.string().trim().min(10, "Your message must be at least 10 characters long.").max(10_000, "Please shorten your message."),
 	"cap-token": z.string().min(1, "Please verify you are human before sending."),
 });
 
-export async function submitInquiry(formData: FormData): Promise<SubmitInquiryResult> {
-	const n8nWebhookPath = process.env.NODE_ENV === "production" ? "webhook" : "webhook-test";
-	const n8nWebhookUrl = `https://n8n.thedannicraft.de/${n8nWebhookPath}/ec21b409-0511-42e8-8863-82452c75f55c`;
+const capResponseSchema = z.object({
+	success: z.boolean(),
+	error: z.string().optional(),
+	"error-codes": z.array(z.string()).optional(),
+});
 
+export async function submitInquiry(formData: FormData): Promise<SubmitInquiryResult> {
 	const parsedData = inquirySchema.safeParse(Object.fromEntries(formData.entries()));
 
 	if (!parsedData.success) {
@@ -31,55 +31,52 @@ export async function submitInquiry(formData: FormData): Promise<SubmitInquiryRe
 		return { success: false, message: parsedData.error.issues[0].message };
 	}
 
-	const { "cap-token": token, ...validatedPayload } = parsedData.data;
+	const { "cap-token": token, ...inquiry } = parsedData.data;
 
 	try {
-		// 1. Verify the Cap Token
-		const capVerifyUrl = "https://challenge.cloud.thedannicraft.de/03d619b86e/siteverify";
+		const capVerifyUrl = process.env.CAP_VERIFY_URL ?? "https://challenge.cloud.thedannicraft.de/03d619b86e/siteverify";
+		const capSecret = process.env.CAP_SECRET;
+
+		if (!capSecret) {
+			console.error("Cap verification configuration is incomplete", { missing: "CAP_SECRET" });
+			return { success: false, message: "Security verification is not configured for this deployment." };
+		}
+
 		const capResponse = await fetch(capVerifyUrl, {
 			method: "POST",
-			headers: {
-				"Content-Type": "application/json",
-			},
-			body: JSON.stringify({ token }),
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify({ secret: capSecret, response: token }),
+			signal: AbortSignal.timeout(8_000),
 		});
+		const capResponseBody: unknown = await capResponse.json().catch(() => null);
+		const capResult = capResponseSchema.safeParse(capResponseBody);
 
-		const capResult = await capResponse.json();
-
-		if (!capResponse.ok || !capResult.success) {
-			console.error("Cap verification failed:", capResult);
+		if (!capResponse.ok || !capResult.success || !capResult.data.success) {
+			console.error("Cap verification failed", {
+				status: capResponse.status,
+				error: capResult.success ? capResult.data.error : "Invalid response body",
+				errorCodes: capResult.success ? capResult.data["error-codes"] : undefined,
+			});
 			return { success: false, message: "Security check failed. Please try again." };
 		}
 
-		// 2. Submit data to n8n (excluding the token, as it's already verified)
-		const response = await fetch(n8nWebhookUrl, {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json",
-			},
-			body: JSON.stringify(validatedPayload),
-		});
-
-		const responseText = await response.text();
-		const result = responseText ? (JSON.parse(responseText) as N8nResponse) : null;
-		const isSuccess = result?.success === true || result?.success === "true";
-
-		if (!response.ok || !isSuccess) {
-			const detail = result?.message || responseText;
-			console.error(`n8n webhook responded with ${response.status} ${response.statusText}${detail ? `: ${detail}` : ""}`);
-			return { success: false, message: "The inquiry could not be sent. Please try again." };
+		if ((process.env.INQUIRY_DELIVERY_MODE ?? "disabled") !== "chatwoot") {
+			return { success: false, message: "Project inquiries are not enabled for this deployment." };
 		}
+
+		const inquiryId = createHash("sha256").update(token).digest("hex").slice(0, 20);
+		await createInquiryConversation(inquiry, inquiryId);
 
 		return { success: true };
 	} catch (error) {
-		const errorMessage = error instanceof Error ? error.message : "Unknown error";
-		console.error("Error submitting inquiry:", errorMessage);
-
-		return {
-			success: false,
-			message: errorMessage.includes("fetch")
-				? "The request could not be completed. Check CORS or network status."
-				: "The inquiry could not be sent. Please try again.",
-		};
+		console.error(
+			"Inquiry submission failed",
+			error instanceof z.ZodError
+				? { name: error.name, issues: error.issues }
+				: error instanceof Error
+					? { name: error.name, message: error.message }
+					: { message: "Unknown error" },
+		);
+		return { success: false, message: "The inquiry could not be sent. Please try again." };
 	}
 }

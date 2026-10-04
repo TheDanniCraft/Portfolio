@@ -24,7 +24,7 @@ const contactTiles: ContactTile[] = [
 	{
 		title: "Blog",
 		description: "Notes on systems, building, and engineering.",
-		href: "/blog",
+		href: "https://blog.thedannicraft.de",
 	},
 ];
 
@@ -34,7 +34,7 @@ export default function ContactPage() {
 
 	return (
 		<div className='min-h-screen bg-background text-foreground'>
-			<main className='mx-auto max-w-7xl px-6 pb-20 pt-32'>
+			<div className='mx-auto max-w-7xl px-6 pb-20 pt-32'>
 				<header className='mb-20'>
 					<p className='text-xs font-bold uppercase tracking-[0.34em] text-accent'>Project Inquiry</p>
 
@@ -96,7 +96,7 @@ export default function ContactPage() {
 						</section>
 					</aside>
 				</div>
-			</main>
+			</div>
 		</div>
 	);
 }

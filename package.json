@@ -2,36 +2,45 @@
 	"name": "portfolio",
 	"version": "0.1.0",
 	"private": true,
+	"packageManager": "bun@1.4.2",
+	"engines": {
+		"node": ">=22 <25"
+	},
 	"scripts": {
-		"app:dev": "infisical run --env=dev --watch -- next dev",
-		"app:build": "next build",
-		"app:start": "next start",
-		"app:lint": "eslint .",
-		"app:typecheck": "tsc --noEmit",
+		"dev": "infisical run --env=dev --watch -- next dev",
+		"build": "next build",
+		"start": "next start",
+		"lint": "eslint .",
+		"typecheck": "tsc --noEmit",
 		"postinstall": "bun scripts/copy-pdf-worker.mjs"
 	},
 	"dependencies": {
+		"@c15t/nextjs": "2.2.1",
 		"@gravity-ui/icons": "^2.18.0",
-		"@heroui-pro/react": "^1.0.0-beta.2",
-		"@heroui/react": "^3.0.3",
-		"@heroui/styles": "^3.0.3",
+		"@heroui-pro/react": "1.0.0-beta.10",
+		"@heroui/react": "3.2.6",
+		"@heroui/styles": "3.2.6",
 		"@icons-pack/react-simple-icons": "^13.13.0",
 		"@number-flow/react": ">=0.5.0",
+		"@react-aria/ssr": "3.10.1",
+		"@react-aria/utils": "3.34.1",
+		"c15t": "2.2.1",
 		"cap-widget": "^0.1.56",
 		"embla-carousel": ">=8.6.0",
 		"embla-carousel-react": ">=8.6.0",
 		"motion": ">=12.12.0",
-		"next": "16.2.4",
+		"next": "16.3.6",
 		"next-plausible": "^4.0.0",
 		"next-themes": "^0.4.6",
 		"react": "19.2.4",
-		"react-aria-components": "^1.19.0",
+		"react-aria": "3.52.1",
+		"react-aria-components": "1.21.1",
 		"react-dom": "19.2.4",
 		"react-pdf": "^10.4.1",
 		"react-resizable-panels": ">=4.10.0",
 		"recharts": ">=2.0.0",
 		"tailwind-merge": ">=3.4.0",
-		"tailwind-variants": ">=3.2.0",
+		"tailwind-variants": "3.3.1",
 		"zod": "^4.4.3"
 	},
 	"devDependencies": {
@@ -41,7 +50,7 @@
 		"@types/react": "^19.2.14",
 		"@types/react-dom": "^19.2.3",
 		"eslint": "^9.39.4",
-		"eslint-config-next": "16.2.4",
+		"eslint-config-next": "16.3.6",
 		"tailwindcss": "^4.2.4",
 		"typescript": "^5.9.3"
 	},
@@ -55,5 +64,9 @@
 		"heroui-pro",
 		"@heroui-pro/react",
 		"heroui-native-pro"
-	]
+	],
+	"overrides": {
+		"figlet": "1.11.3",
+		"tar": "7.5.21"
+	}
 }

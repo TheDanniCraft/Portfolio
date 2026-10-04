@@ -12,7 +12,6 @@ import { useSyncExternalStore } from "react";
 const navItems = [
 	{ href: "/work", label: "Work" },
 	{ href: "/case-studies", label: "Case Studies" },
-	{ href: "/testimonials", label: "Testimonials" },
 	{ href: "/contact", label: "Contact" },
 ];
 
@@ -128,7 +127,7 @@ export function SiteNavbar() {
 						<AvailabilityIndicator compact />
 					</Navbar.Item>
 
-					<Navbar.Item aria-label='cta'>
+					<Navbar.Item aria-label='cta' className='hidden sm:flex'>
 						<Link className={buttonVariants({ variant: "primary" })} href='/contact'>
 							Book Me
 						</Link>
@@ -136,7 +135,7 @@ export function SiteNavbar() {
 
 					<Navbar.Separator className='hidden sm:block' />
 
-					<Navbar.Item aria-label='Theme switcher' render={(props) => <a {...props} />}>
+					<Navbar.Item aria-label='Theme switcher' className='hidden sm:flex' render={(props) => <a {...props} />}>
 						{mounted && theme ? (
 							<Segment className='gap-0' selectedKey={theme} onSelectionChange={(key) => setTheme(String(key))} size='sm'>
 								<Segment.Item aria-label='Light' className='size-7 px-0' id='light'>
