@@ -1,0 +1,67 @@
+Gitmoji Guide for AI Assistants
+Purpose
+
+This guide helps AI assistants understand and use gitmoji convention when creating commits. Using emojis on commit messages provides an easy way of identifying the purpose or intention of a commit with only looking at the emojis used. Gitmoji use emojis to make commit messages more expressive and easier to understand at a glance.
+Repository Convention
+
+A commit message is composed using the following pieces:
+
+    intention: The intention you want to express with the commit, using one Unicode emoji from the gitmoji list.
+    message: A brief, natural-language explanation of the change in imperative mood.
+
+Format
+
+<intention> <imperative message>
+
+[optional body]
+
+Do not add Conventional Commit prefixes or scopes such as `feat:`, `fix:`, `docs:`, `refactor:`, or `chore:`. Match the repository's existing history: after the emoji, begin directly with a capitalized action verb such as `Add`, `Fix`, `Refine`, `Move`, `Show`, `Guard`, `Bump`, or `Resolve`.
+
+Gitmoji reference
+
+Fetch all available gitmojis from: https://gitmoji.dev/api/gitmojis.
+Usage Guidelines for AI
+Selecting the correct emoji
+
+    Identify the primary purpose of the commit
+    Choose the most specific emoji that matches the change
+    Use only one emoji per commit for clarity
+    Prioritize by impact: Breaking changes (💥) > Features (✨) > Fixes (🐛) > Refactoring (♻️)
+
+Examples
+
+✨ Add user authentication system
+
+Implement JWT-based authentication with login and registration endpoints.
+Closes #123
+
+🐛 Resolve null pointer exception in user service
+
+Added null check before accessing user properties to prevent crashes.
+
+📝 Update installation instructions
+
+Added step-by-step guide for setting up the development environment.
+
+⚡️ Optimize user query with indexing
+
+Reduced query time from 500ms to 50ms by adding composite index.
+
+💥 Update API response format to REST specification
+
+All API endpoints now return data in a standardized envelope format.
+Clients must update their response parsing logic.
+
+Best Practices
+
+    Be atomic: One emoji, one purpose, one commit
+    Write clear subjects: Keep under 60 characters, imperative mood
+    Use the body: Explain "why" not "what" for complex changes
+    Reference issues: Include issue numbers when applicable
+    Indicate breaking changes: Use 💥 :boom:.
+
+Resources
+
+    Gitmojis list: https://gitmoji.dev/api/gitmojis
+    Gitmoji website: https://gitmoji.dev/
+    Gitmoji specification: https://gitmoji.dev/specification

@@ -1,11 +1,7 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import { LegalPage } from "@/components/legal-page";
 
-export const metadata: Metadata = {
-	title: "Privacy Policy",
-	description: "How TheDanniCraft processes personal data on this website.",
-	alternates: { canonical: "/legal/privacy" },
-};
+export const metadata = pageMetadata("/legal/privacy", "Privacy Policy", "How TheDanniCraft processes personal data on this website.");
 
 export default function PrivacyPage() {
 	return (

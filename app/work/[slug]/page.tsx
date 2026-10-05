@@ -1,6 +1,7 @@
 import { ArrowLeft, ArrowUpRightFromSquare } from "@gravity-ui/icons";
 import { Card } from "@heroui/react";
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { caseStudyProjects, getProject } from "@/lib/projects";
@@ -14,7 +15,8 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
 	const project = getProject((await params).slug);
-	return project?.caseStudy ? { title: `${project.title} Case Study`, description: project.summary } : {};
+	if (!project?.caseStudy) notFound();
+	return pageMetadata(`/work/${project.slug}`, `${project.title} Case Study`, project.summary);
 }
 
 export default async function ProjectCaseStudy({ params }: PageProps) {

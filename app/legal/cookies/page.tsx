@@ -1,13 +1,9 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import { CookiePreferencesButton } from "@/components/consent-manager";
 import { LegalPage } from "@/components/legal-page";
 import { necessaryConsentServices, optionalConsentServices, type ConsentService } from "@/lib/consent-services";
 
-export const metadata: Metadata = {
-	title: "Storage & Cookies",
-	description: "Browser storage and cookie information for TheDanniCraft.",
-	alternates: { canonical: "/legal/cookies" },
-};
+export const metadata = pageMetadata("/legal/cookies", "Storage & Cookies", "Browser storage and cookie information for TheDanniCraft.");
 
 const storageServices = [...necessaryConsentServices, ...optionalConsentServices];
 

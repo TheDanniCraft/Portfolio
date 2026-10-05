@@ -1,3 +1,4 @@
+import { pageMetadata, siteDescription, siteTitle } from "@/lib/metadata";
 import { buttonVariants, Card, Link } from "@heroui/react";
 import { AvailabilityIndicator } from "@/components/availability-indicator";
 import { CvModalButton } from "@/components/cv-modal-button";
@@ -6,6 +7,8 @@ import { projects } from "@/lib/projects";
 import { ProjectInquiryForm } from "@/components/project-inquiry-form";
 import { Marquee } from "@/components/marquee";
 import { ProjectImage } from "@/components/project-image";
+
+export const metadata = pageMetadata("/", siteTitle, siteDescription);
 
 export default function Home() {
 	const featuredProjects = projects.filter((project) => project.featured);

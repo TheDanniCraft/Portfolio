@@ -1,11 +1,7 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import { LegalPage } from "@/components/legal-page";
 
-export const metadata: Metadata = {
-	title: "Privacy Requests",
-	description: "How to exercise privacy rights concerning TheDanniCraft.",
-	alternates: { canonical: "/legal/privacy-requests" },
-};
+export const metadata = pageMetadata("/legal/privacy-requests", "Privacy Requests", "How to exercise privacy rights concerning TheDanniCraft.");
 
 export default function PrivacyRequestsPage() {
 	return (

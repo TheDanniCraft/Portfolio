@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata, siteDescription, siteTitle, siteUrl } from "@/lib/metadata";
 import { Toast } from "@heroui/react";
 import { Inter } from "next/font/google";
 import "./globals.css";
@@ -14,23 +15,11 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-	metadataBase: new URL("https://thedannicraft.de"),
+	...pageMetadata("/", siteTitle, siteDescription),
+	metadataBase: new URL(siteUrl),
 	title: {
-		default: "TheDanniCraft · Product Engineering & Systems",
+		default: siteTitle,
 		template: "%s · TheDanniCraft",
-	},
-	description: "Independent product engineering, system architecture, automation, and open-source work by TheDanniCraft.",
-	openGraph: {
-		type: "website",
-		locale: "en_US",
-		siteName: "TheDanniCraft",
-		title: "TheDanniCraft · Product Engineering & Systems",
-		description: "Independent product engineering, system architecture, automation, and open-source work by TheDanniCraft.",
-	},
-	twitter: {
-		card: "summary",
-		title: "TheDanniCraft · Product Engineering & Systems",
-		description: "Independent product engineering, system architecture, automation, and open-source work by TheDanniCraft.",
 	},
 	appleWebApp: {
 		title: "TheDanniCraft.de",
