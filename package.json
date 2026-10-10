@@ -15,7 +15,7 @@
 		"postinstall": "bun scripts/copy-pdf-worker.mjs"
 	},
 	"dependencies": {
-		"@c15t/nextjs": "2.2.1",
+		"@c15t/nextjs": "2.3.0",
 		"@gravity-ui/icons": "^2.18.0",
 		"@heroui-pro/react": "1.0.0-beta.10",
 		"@heroui/react": "3.2.6",
@@ -24,7 +24,7 @@
 		"@number-flow/react": ">=0.5.0",
 		"@react-aria/ssr": "3.10.1",
 		"@react-aria/utils": "3.34.1",
-		"c15t": "2.2.1",
+		"c15t": "2.3.0",
 		"cap-widget": "^0.1.56",
 		"embla-carousel": ">=8.6.0",
 		"embla-carousel-react": ">=8.6.0",
