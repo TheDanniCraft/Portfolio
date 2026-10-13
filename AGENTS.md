@@ -65,3 +65,29 @@ Resources
     Gitmojis list: https://gitmoji.dev/api/gitmojis
     Gitmoji website: https://gitmoji.dev/
     Gitmoji specification: https://gitmoji.dev/specification
+
+## Spec Kit and quality policy
+
+Read `.specify/memory/constitution.md`, `docs/testing-policy.md` and
+`.specify/memory/tdd-profile.md` before feature work. Codex and Claude share the same policies,
+Python helpers, TDD extension and test-first governance preset. Codex skills live in
+`.agents/skills/`; Claude skills live in `.claude/skills/`.
+
+Run `uv sync --locked`, then activate `.venv` before generated `python3` commands (or use
+`.venv/bin/python` directly). See `docs/development-tooling.md` for pinned setup commands.
+Tests precede production behavior changes. Run complete files without coverage in the inner loop,
+complete affected suites at slice completion and full applicable gates before merge. Keep shared
+mutable integration fixtures serial until isolated. Never pass a missing/zero-test gate.
+Record slow/flaky-test measurements, diagnosis and improvements in `docs/test-learning.md`.
+
+## Graph-first source discovery
+
+For functions, symbols and relationships, query `graphify-out/graph.json` first using
+`graphify query`, `graphify explain` or `graphify path`, then use targeted reads/`rg` to verify
+current source. If the graph is absent, stale or incomplete, use source search and refresh it.
+Graph results cannot prove the absence of code or complete affected-test coverage.
+
+Refresh after source changes with `graphify extract . --code-only --max-workers 2`, then
+`graphify cluster-only . --no-label`. The index includes the current worktree, including untracked
+source; matching HEAD alone does not prove freshness. Respect `.graphifyignore`. Preserve the
+existing user work and use one owning suite per test rather than duplicate evidence.
