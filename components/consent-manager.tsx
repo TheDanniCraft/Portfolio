@@ -16,6 +16,8 @@ const portfolioPolicy = {
 	consent: { ...europePolicy.consent, expiryDays: 180 },
 };
 
+const bannerActionClassName = "h-auto min-h-11 w-full min-w-0 whitespace-normal px-1.5 py-2 text-xs leading-4 sm:h-9 sm:min-h-9 sm:whitespace-nowrap sm:px-3 sm:py-0 sm:text-sm lg:w-auto";
+
 const subscribeToHydration = () => () => undefined;
 const getHydratedSnapshot = () => true;
 const getServerHydratedSnapshot = () => false;
@@ -162,10 +164,10 @@ function ConsentInterface() {
 							<p className='mt-0.5 text-xs leading-5 text-muted sm:text-sm'>Optional functionality stays off until you choose. Essential security and cookieless analytics remain active. <a className='font-bold text-foreground underline underline-offset-2' href='/legal/privacy'>Privacy</a> <span aria-hidden='true'>·</span> <a className='font-bold text-foreground underline underline-offset-2' href='/legal/cookies'>Cookies</a></p>
 						</div>
 					</div>
-					<div className='grid gap-2 sm:grid-cols-3 lg:flex lg:items-center'>
-						<Button isDisabled={pending} onPress={showPreferencesFromBanner} size='sm' variant='secondary'><Gear className='size-4' aria-hidden='true' />Preferences</Button>
-						<Button isDisabled={pending} isPending={pendingAction === "reject"} onPress={() => void save("reject", () => performBannerAction("reject"))} size='sm' variant='secondary'>Reject optional</Button>
-						<Button isDisabled={pending} isPending={pendingAction === "accept"} onPress={() => void save("accept", () => performBannerAction("accept"))} size='sm' variant='primary'>Accept all</Button>
+					<div className='grid grid-cols-3 gap-2 lg:flex lg:items-center'>
+						<Button className={bannerActionClassName} isDisabled={pending} onPress={showPreferencesFromBanner} size='sm' variant='secondary'><Gear className='hidden size-4 sm:block' aria-hidden='true' />Preferences</Button>
+						<Button className={bannerActionClassName} isDisabled={pending} isPending={pendingAction === "reject"} onPress={() => void save("reject", () => performBannerAction("reject"))} size='sm' variant='secondary'>Reject optional</Button>
+						<Button className={bannerActionClassName} isDisabled={pending} isPending={pendingAction === "accept"} onPress={() => void save("accept", () => performBannerAction("accept"))} size='sm' variant='primary'>Accept all</Button>
 					</div>
 					{saveError ? <p className='text-sm font-bold text-danger lg:col-span-2' role='alert'>{saveError}</p> : null}
 				</div>
