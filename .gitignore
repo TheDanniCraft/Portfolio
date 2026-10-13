@@ -40,3 +40,21 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Python development tools
+/.venv/
+__pycache__/
+*.pyc
+
+# Machine-local agent and tooling state; keep generated skills versioned
+/.claude/settings.local.json
+/.codex/
+/.specify/extensions/.cache/
+/.specify/extensions/.backup/
+/.specify/presets/.cache/
+/.specify/presets/.backup/
+/graphify-out/cache/
+/graphify-out/.graphify_python
+/graphify-out/.graphify_root
+/graphify-out/.graphify_*.json
+/graphify-out/health.json
