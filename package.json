@@ -2,7 +2,7 @@
 	"name": "portfolio",
 	"version": "0.1.0",
 	"private": true,
-	"packageManager": "bun@1.4.3",
+	"packageManager": "bun@1.4.4",
 	"engines": {
 		"node": ">=22 <25"
 	},
@@ -28,8 +28,8 @@
 		"cap-widget": "^0.1.58",
 		"embla-carousel": ">=8.6.0",
 		"embla-carousel-react": ">=8.6.0",
-		"motion": ">=14.2.0",
-		"next": "16.4.1",
+		"motion": ">=14.6.0",
+		"next": "16.4.3",
 		"next-plausible": "^4.0.0",
 		"next-themes": "^0.4.6",
 		"react": "19.3.1",
@@ -37,20 +37,20 @@
 		"react-aria-components": "1.22.1",
 		"react-dom": "19.3.1",
 		"react-pdf": "^11.0.0",
-		"react-resizable-panels": ">=4.14.5",
+		"react-resizable-panels": ">=4.14.8",
 		"recharts": ">=3.10.1",
 		"tailwind-merge": ">=3.7.0",
 		"tailwind-variants": "3.3.1",
 		"zod": "^4.6.7"
 	},
 	"devDependencies": {
-		"@babel/core": "^8.0.7",
+		"@babel/core": "^8.0.9",
 		"@tailwindcss/postcss": "^4.3.3",
 		"@types/node": "^20.19.43",
 		"@types/react": "^19.3.0",
 		"@types/react-dom": "^19.3.0",
 		"eslint": "^9.39.5",
-		"eslint-config-next": "16.4.1",
+		"eslint-config-next": "16.4.3",
 		"tailwindcss": "^4.3.3",
 		"typescript": "^5.9.3"
 	},
