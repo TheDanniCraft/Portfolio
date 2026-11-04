@@ -4,7 +4,7 @@
 	"private": true,
 	"packageManager": "bun@1.4.3",
 	"engines": {
-		"node": ">=22 <25"
+		"node": ">=22 <27"
 	},
 	"scripts": {
 		"dev": "infisical run --env=dev --watch -- next dev",
